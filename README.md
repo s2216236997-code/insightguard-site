@@ -1,2 +1,9 @@
-# insightguard-site
-Official website for Insight Guard — contract-first AI governance and runtime enforcement.
+# Insight Guard — Website
+
+Minimal static landing page for Insight Guard.
+
+## Local preview
+Open `index.html` in your browser.
+
+## Next
+Deploy via Vercel / Cloudflare Pages / GitHub Pages and bind `insightguard.tech`.
