@@ -2,23 +2,27 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Insight Guard — Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Design notes on AI governance, determinism, and contract-first systems."
+      content="Insight Guard Notes — short engineering notes on AI governance, determinism, auditability, and contract-first runtime control."
     />
     <meta name="robots" content="index,follow" />
+
     <style>
       :root {
         --bg: #0b1020;
-        --card: rgba(18, 26, 51, 0.8);
+        --card: rgba(18, 26, 51, 0.85);
         --text: #e8ecff;
         --muted: #b8c0ff;
         --line: rgba(132, 145, 255, 0.18);
+        --accent: #7c4dff;
         --shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
       }
+
       * { box-sizing: border-box; }
+
       body {
         margin: 0;
         font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
@@ -26,65 +30,139 @@
         background:
           radial-gradient(1200px 700px at 18% 12%, rgba(124, 77, 255, 0.25), transparent 60%),
           radial-gradient(900px 600px at 82% 20%, rgba(77, 227, 255, 0.16), transparent 60%),
-          radial-gradient(900px 700px at 55% 92%, rgba(124, 77, 255, 0.18), transparent 60%),
           var(--bg);
       }
-      a { color: inherit; }
-      .wrap { max-width: 980px; margin: 0 auto; padding: 56px 22px 72px; }
-      .top { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom: 22px; }
-      .brand { display:flex; align-items:center; gap:12px; }
+
+      a { color: inherit; text-decoration: none; }
+
+      .wrap {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 56px 22px 72px;
+      }
+
+      /* Header */
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 36px;
+        gap: 16px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
       .logo {
-        width: 36px; height: 36px; border-radius: 14px;
-        background: linear-gradient(135deg, rgba(124,77,255,1), rgba(77,227,255,0.9));
+        width: 40px;
+        height: 40px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, #7c4dff, #4de3ff);
         box-shadow: 0 10px 30px rgba(124,77,255,0.25);
       }
-      .brand b { letter-spacing: 0.3px; font-size: 16px; }
-      .mini { color: rgba(232,236,255,0.55); font-size: 12px; }
-      .nav { display:flex; gap:10px; flex-wrap:wrap; }
-      .nav a{
-        text-decoration:none;
+
+      .brand b {
+        font-size: 16px;
+        letter-spacing: 0.3px;
+      }
+
+      .brand span {
+        font-size: 12px;
+        color: rgba(232,236,255,0.6);
+      }
+
+      .nav {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .nav a {
+        font-size: 13px;
         padding: 8px 12px;
         border: 1px solid var(--line);
         border-radius: 999px;
         color: var(--muted);
-        font-size: 13px;
         background: rgba(18,26,51,0.35);
         backdrop-filter: blur(6px);
       }
-      .panel{
+
+      /* Notes card */
+      .card {
         border: 1px solid var(--line);
         border-radius: 22px;
-        padding: 22px;
-        background: linear-gradient(180deg, rgba(18,26,51,0.92), rgba(18,26,51,0.62));
+        padding: 28px 24px;
+        background: var(--card);
         box-shadow: var(--shadow);
       }
-      h1{ margin:0 0 8px; font-size: 28px; letter-spacing:-0.4px; }
-      p{ margin:0; color: var(--muted); line-height:1.6; }
-      .list { margin-top: 16px; display:flex; flex-direction:column; gap:12px; }
-      .item{
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        padding: 14px 14px;
-        background: var(--card);
-        display:flex; justify-content:space-between; align-items:flex-start; gap:12px;
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: 36px;
+        letter-spacing: -0.5px;
       }
-      .item a{ text-decoration:none; }
-      .title{ font-weight: 700; }
-      .meta{ color: rgba(232,236,255,0.55); font-size: 12px; margin-top: 6px; }
-      .tag{
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        padding: 6px 10px;
+
+      .desc {
         color: var(--muted);
-        font-size: 12px;
-        background: rgba(11,16,32,0.35);
-        white-space: nowrap;
+        font-size: 15px;
+        line-height: 1.6;
+        max-width: 760px;
       }
-      .foot{
-        margin-top: 18px;
-        color: rgba(232,236,255,0.55);
+
+      .notes {
+        margin-top: 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .note {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 16px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(11,16,32,0.45);
+      }
+
+      .note:hover {
+        border-color: rgba(124,77,255,0.45);
+      }
+
+      .note-title {
+        font-size: 15px;
+        font-weight: 600;
+      }
+
+      .note-meta {
         font-size: 12px;
-        display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+        color: rgba(232,236,255,0.55);
+        white-space: nowrap;
+        margin-left: 16px;
+      }
+
+      .foot {
+        margin-top: 22px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+        font-size: 12px;
+        color: rgba(232,236,255,0.55);
+      }
+
+      @media (max-width: 720px) {
+        h1 { font-size: 30px; }
+        .note {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 6px;
+        }
+        .note-meta { margin-left: 0; }
       }
     </style>
   </head>
@@ -93,12 +171,13 @@
     <div class="wrap">
       <div class="top">
         <div class="brand">
-          <div class="logo" aria-hidden="true"></div>
+          <div class="logo"></div>
           <div>
             <b>Insight Guard</b><br />
-            <span class="mini">Notes — contract-first AI governance</span>
+            <span>Notes — contract-first AI governance</span>
           </div>
         </div>
+
         <div class="nav">
           <a href="/">Home</a>
           <a href="/#contract">API Contract</a>
@@ -106,34 +185,39 @@
         </div>
       </div>
 
-      <div class="panel">
+      <div class="card">
         <h1>Notes</h1>
-        <p>
-          Short engineering notes on governance, determinism, auditability, and contract-first runtime control.
+        <p class="desc">
+          Short engineering notes on governance, determinism, auditability, and
+          contract-first runtime control.  
           This is not marketing. It’s the reasoning layer behind the contract.
         </p>
 
-        <div class="list" aria-label="notes-list">
-          <div class="item">
-            <div>
-              <a class="title" href="./2026-02-ai-governance-is-infrastructure.html">
-                AI Governance Is Infrastructure, Not Policy
-              </a>
-              <div class="meta">Feb 2026 · 5 min read</div>
+        <div class="notes">
+          <!-- Notes list (manually append new entries below) -->
+
+          <a class="note" href="/blog/2026-02-ai-governance-is-infrastructure.html">
+            <div class="note-title">
+              AI Governance Is Infrastructure, Not Policy
             </div>
-            <div class="tag">Governance</div>
-          </div>
+            <div class="note-meta">Feb 2026 · 5 min read</div>
+          </a>
+
+          <a class="note" href="/blog/2026-02-determinism-not-explainability.html">
+            <div class="note-title">
+              Determinism Is More Important Than Explainability
+            </div>
+            <div class="note-meta">Feb 2026 · 4 min read</div>
+          </a>
+
+          <!-- ↑ 新文章永远加在这里 -->
         </div>
 
         <div class="foot">
-          <div>© <span id="y"></span> Insight Guard</div>
-          <div>URL stable • No tracking • Minimal surface</div>
+          <div>© 2026 Insight Guard</div>
+          <div>URL stable · No tracking · Minimal surface</div>
         </div>
       </div>
     </div>
-
-    <script>
-      document.getElementById("y").textContent = new Date().getFullYear();
-    </script>
   </body>
 </html>
