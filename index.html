@@ -152,6 +152,7 @@
           <a href="#why">Why</a>
           <a href="#how">How</a>
           <a href="#contract">API Contract</a>
+          <a href="/blog/">Notes</a>
           <a href="#faq">FAQ</a>
           <a href="#contact">Contact</a>
         </div>
@@ -178,6 +179,7 @@
         <div class="cta">
           <a class="btn primary" href="#contact">Request access / reference pack</a>
           <a class="btn" href="#contract">View contract snippet</a>
+          <a class="btn" href="/blog/">Read notes</a>
         </div>
 
         <div class="grid" id="why">
@@ -295,9 +297,10 @@ Authorization: Bearer &lt;API_KEY&gt;
         <h2>FAQ</h2>
         <ul>
           <li><b>Do I need to point the domain to a VPS?</b> No. This site is static and hosted via GitHub Pages; your API can stay elsewhere.</li>
-          <li><b>Why not use .com?</b> .com is nice, but the contract and trust are in your behavior_version + docs, not the TLD. Use what you can lock down now.</li>
+          <li><b>What makes this “contract-first”?</b> Behavior is versioned, reason codes are stable, and every decision is auditable with replayable semantics.</li>
           <li><b>Can this run “shadow-only”?</b> Yes. You can log decisions without enforcing them, then turn on enforcement per tenant.</li>
           <li><b>Is this “AI safety” marketing?</b> No. This is runtime governance with auditable outputs and contract semantics.</li>
+          <li><b>Where can I read more?</b> Notes live at <a href="/blog/">/blog/</a>.</li>
         </ul>
       </div>
 
@@ -312,6 +315,9 @@ Authorization: Bearer &lt;API_KEY&gt;
           <div class="pill">SDK v0 (Node / Python)</div>
           <div class="pill">Contract bundle</div>
           <div class="pill">Ops runbooks</div>
+        </div>
+        <div class="pillrow" style="margin-top: 10px;">
+          <a class="pill" href="/blog/" style="text-decoration:none;">Read Notes →</a>
         </div>
       </div>
 
