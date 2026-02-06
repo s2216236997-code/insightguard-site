@@ -4,11 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Insight Guard — Contract-first AI Governance</title>
+
     <meta
       name="description"
       content="Contract-first AI governance at runtime. Deterministic decisions, auditable outputs, tenant isolation, and kill-switch ready — without storing raw user data by default."
     />
     <meta name="robots" content="index,follow" />
+
     <style>
       :root {
         --bg: #0b1020;
@@ -20,7 +22,9 @@
         --accent2: #4de3ff;
         --shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
       }
+
       * { box-sizing: border-box; }
+
       body {
         margin: 0;
         font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
@@ -31,22 +35,62 @@
           radial-gradient(900px 700px at 55% 92%, rgba(124, 77, 255, 0.18), transparent 60%),
           var(--bg);
       }
-      a { color: inherit; }
-      .wrap { max-width: 1040px; margin: 0 auto; padding: 56px 22px 72px; }
+
+      a { color: inherit; text-decoration: none; }
+
+      .wrap {
+        max-width: 1040px;
+        margin: 0 auto;
+        padding: 56px 22px 72px;
+      }
+
+      /* ───────── Top Bar ───────── */
+
       .top {
-        display: flex; align-items: center; justify-content: space-between; gap: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
         margin-bottom: 36px;
       }
-      .brand { display: flex; align-items: center; gap: 12px; }
-      .logo {
-        width: 40px; height: 40px; border-radius: 14px;
-        background: linear-gradient(135deg, rgba(124,77,255,1), rgba(77,227,255,0.9));
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .logo-img {
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+        object-fit: cover;
         box-shadow: 0 10px 30px rgba(124,77,255,0.25);
       }
-      .brand b { letter-spacing: 0.3px; font-size: 16px; }
-      .nav { display: flex; gap: 14px; flex-wrap: wrap; }
+
+      .brand-title {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.2;
+      }
+
+      .brand-title b {
+        font-size: 16px;
+        letter-spacing: 0.3px;
+      }
+
+      .brand-title span {
+        font-size: 12px;
+        color: rgba(232,236,255,0.6);
+      }
+
+      .nav {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
       .nav a {
-        text-decoration: none;
         padding: 8px 12px;
         border: 1px solid var(--line);
         border-radius: 999px;
@@ -55,6 +99,9 @@
         background: rgba(18,26,51,0.35);
         backdrop-filter: blur(6px);
       }
+
+      /* ───────── Hero ───────── */
+
       .hero {
         border: 1px solid var(--line);
         border-radius: 22px;
@@ -62,268 +109,136 @@
         background: linear-gradient(180deg, rgba(18,26,51,0.92), rgba(18,26,51,0.62));
         box-shadow: var(--shadow);
       }
-      h1 { margin: 0 0 10px; font-size: 42px; line-height: 1.08; letter-spacing: -0.6px; }
-      .sub { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.6; max-width: 860px; }
-      .pillrow { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+      h1 {
+        margin: 0 0 10px;
+        font-size: 42px;
+        line-height: 1.08;
+        letter-spacing: -0.6px;
+      }
+
+      .sub {
+        margin: 0;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.6;
+        max-width: 860px;
+      }
+
+      .pillrow {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 16px;
+      }
+
       .pill {
-        font-size: 12px; color: var(--muted);
+        font-size: 12px;
+        color: var(--muted);
         border: 1px solid var(--line);
         border-radius: 999px;
         padding: 7px 10px;
         background: rgba(11,16,32,0.35);
       }
-      .cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+
+      .cta {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 18px;
+      }
+
       .btn {
-        display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         padding: 12px 14px;
         border-radius: 14px;
         border: 1px solid var(--line);
-        text-decoration: none;
         background: rgba(18,26,51,0.35);
         backdrop-filter: blur(6px);
-        color: var(--text);
         font-weight: 650;
         font-size: 14px;
       }
+
       .btn.primary {
         border-color: rgba(124,77,255,0.35);
         background: linear-gradient(135deg, rgba(124,77,255,0.95), rgba(77,227,255,0.22));
         box-shadow: 0 16px 40px rgba(124,77,255,0.18);
       }
-      .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
-      .card {
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        padding: 16px 16px;
-        background: var(--card);
-      }
-      .card h3 { margin: 0 0 8px; font-size: 15px; }
-      .card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
-      .section {
-        margin-top: 22px;
-        border: 1px solid var(--line);
-        border-radius: 22px;
-        padding: 22px;
-        background: rgba(18,26,51,0.55);
-      }
-      .section h2 { margin: 0 0 10px; font-size: 20px; letter-spacing: -0.2px; }
-      .two { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 14px; }
-      ul { margin: 10px 0 0; padding-left: 18px; color: var(--muted); }
-      li { margin: 8px 0; line-height: 1.55; font-size: 13px; }
-      pre {
-        margin: 0;
-        padding: 14px;
-        border-radius: 16px;
-        border: 1px solid var(--line);
-        background: rgba(10, 14, 28, 0.65);
-        overflow: auto;
-        color: #dbe3ff;
-        line-height: 1.55;
-        font-size: 12.5px;
-      }
-      code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+
+      /* ───────── Footer ───────── */
+
       .foot {
         margin-top: 22px;
         color: rgba(232,236,255,0.75);
         font-size: 12.5px;
-        display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: space-between;
+        align-items: center;
       }
-      .mini { color: rgba(232,236,255,0.55); font-size: 12px; }
-      .hr { height: 1px; background: var(--line); margin: 18px 0; }
+
       @media (max-width: 920px) {
-        .grid { grid-template-columns: 1fr; }
-        .two { grid-template-columns: 1fr; }
         h1 { font-size: 34px; }
+        .nav { display: none; }
       }
     </style>
   </head>
 
   <body>
     <div class="wrap">
+      <!-- Top -->
       <div class="top">
         <div class="brand">
-          <div class="logo" aria-hidden="true"></div>
-          <div>
-            <b>Insight Guard</b><br />
-            <span class="mini">Contract-first AI governance at runtime</span>
+          <img
+            src="/logo.png"
+            alt="Insight Guard logo"
+            class="logo-img"
+          />
+          <div class="brand-title">
+            <b>Insight Guard</b>
+            <span>Contract-first AI governance at runtime</span>
           </div>
         </div>
+
         <div class="nav">
           <a href="#why">Why</a>
           <a href="#how">How</a>
           <a href="#contract">API Contract</a>
           <a href="/blog/">Notes</a>
-          <a href="#faq">FAQ</a>
           <a href="#contact">Contact</a>
         </div>
       </div>
 
+      <!-- Hero -->
       <div class="hero">
         <h1>Deterministic governance for AI outputs — with audit-grade reasons.</h1>
         <p class="sub">
           Insight Guard is a <b>governance kernel</b> you call at runtime to decide whether to
-          <b>allow</b>, <b>block</b>, <b>cooldown</b>, or <b>no-op</b>. It is built for
-          <b>contract compliance</b>: stable reason codes, fixed behavior versions, tenant isolation,
-          and kill-switch readiness — without storing raw user text by default.
+          <b>allow</b>, <b>block</b>, <b>cooldown</b>, or <b>no-op</b>.
+          Built for contracts, audits, and real accountability — not marketing safety.
         </p>
 
-        <div class="pillrow" aria-label="product-pillars">
+        <div class="pillrow">
           <div class="pill">Docs = Contract</div>
           <div class="pill">Deterministic behavior_version</div>
-          <div class="pill">Stable reason_code enum</div>
-          <div class="pill">Tenant isolation & minimal data</div>
-          <div class="pill">Fail-safe & graceful degradation</div>
-          <div class="pill">Kill switch (off / shadow-only)</div>
+          <div class="pill">Stable reason_code</div>
+          <div class="pill">Tenant isolation</div>
+          <div class="pill">Kill switch ready</div>
         </div>
 
         <div class="cta">
           <a class="btn primary" href="#contact">Request access / reference pack</a>
-          <a class="btn" href="#contract">View contract snippet</a>
-          <a class="btn" href="/blog/">Read notes</a>
-        </div>
-
-        <div class="grid" id="why">
-          <div class="card">
-            <h3>Why Insight Guard</h3>
-            <p>
-              Most “safety layers” drift silently. Insight Guard treats governance as a contract:
-              behavior is versioned, reasons are enumerable, and audits are replayable.
-            </p>
-          </div>
-          <div class="card">
-            <h3>What it controls</h3>
-            <p>
-              High-risk generations, repetitive “insight” injections, compliance-sensitive outputs,
-              and any decision that must be explainable to security, legal, or procurement.
-            </p>
-          </div>
-          <div class="card">
-            <h3>What it refuses to be</h3>
-            <p>
-              Not a platform. Not a dashboard. Not “magic safety.” No hidden policy changes.
-              No consulting disguised as product.
-            </p>
-          </div>
+          <a class="btn" href="/blog/">Read Notes</a>
         </div>
       </div>
 
-      <div class="section" id="how">
-        <h2>How it works</h2>
-        <div class="two">
-          <div>
-            <ul>
-              <li><b>Single endpoint</b>: your app calls Guard with context and optional hashes.</li>
-              <li><b>One of four outcomes</b>: allow / block / cooldown / no_op.</li>
-              <li><b>Audit UX for machines</b>: stable <code>reason_code</code>, <code>audit_id</code>, and <code>behavior_version</code>.</li>
-              <li><b>Fail-safe</b>: configurable fail-open / fail-closed for timeouts or errors.</li>
-              <li><b>Minimal data surface</b>: default is “no raw text storage”. Store hashes / metadata only.</li>
-              <li><b>Kill switch</b>: tenant-level off or shadow-only (log without enforcement).</li>
-            </ul>
-          </div>
-          <div>
-            <pre><code>{
-  "decision": "allow | block | cooldown | no_op",
-  "reason_code": "STABLE_ENUM",
-  "audit_id": "aud_...",
-  "behavior_version": "v1.0.0",
-  "latency_ms": 12,
-  "policy_mode": "enforce | shadow | off"
-}</code></pre>
-          </div>
-        </div>
-      </div>
-
-      <div class="section" id="contract">
-        <h2>Contract snippet (minimal)</h2>
-        <div class="two">
-          <pre><code>POST /v1/guard
-Content-Type: application/json
-Authorization: Bearer &lt;API_KEY&gt;
-
-{
-  "tenant_id": "tnt_123",
-  "event": {
-    "type": "assistant_output",
-    "content_hash": "sha256:...",
-    "context": {
-      "channel": "prod",
-      "model": "vendor/your-model",
-      "route": "reply",
-      "user_tier": "free | paid"
-    }
-  },
-  "options": {
-    "fail_mode": "open | closed",
-    "shadow_only": false
-  }
-}</code></pre>
-          <pre><code>200 OK
-
-{
-  "decision": "cooldown",
-  "reason_code": "COOLDOWN_ACTIVE",
-  "audit_id": "aud_6f3c...a91",
-  "behavior_version": "guard.v1.contract",
-  "policy_mode": "enforce",
-  "expires_in_sec": 3600
-}</code></pre>
-        </div>
-
-        <div class="hr"></div>
-
-        <div class="two">
-          <div>
-            <h2>What we guarantee</h2>
-            <ul>
-              <li><b>Stable semantics</b>: old behavior versions remain valid; no silent drift.</li>
-              <li><b>Reason codes do not rename</b>: telemetry and audits remain comparable.</li>
-              <li><b>Tenant isolation</b>: no cross-tenant leakage by design.</li>
-              <li><b>Kill switch is a first-class state</b>: “off” is legitimate and auditable.</li>
-            </ul>
-          </div>
-          <div>
-            <h2>What we do not promise</h2>
-            <ul>
-              <li>No claim of “perfect safety” or “guaranteed compliance”.</li>
-              <li>No storage of raw end-user text by default.</li>
-              <li>No custom reason_code for a single customer (avoids consulting trap).</li>
-              <li>No dashboard-heavy surface area in v1.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="section" id="faq">
-        <h2>FAQ</h2>
-        <ul>
-          <li><b>Do I need to point the domain to a VPS?</b> No. This site is static and hosted via GitHub Pages; your API can stay elsewhere.</li>
-          <li><b>What makes this “contract-first”?</b> Behavior is versioned, reason codes are stable, and every decision is auditable with replayable semantics.</li>
-          <li><b>Can this run “shadow-only”?</b> Yes. You can log decisions without enforcing them, then turn on enforcement per tenant.</li>
-          <li><b>Is this “AI safety” marketing?</b> No. This is runtime governance with auditable outputs and contract semantics.</li>
-          <li><b>Where can I read more?</b> Notes live at <a href="/blog/">/blog/</a>.</li>
-        </ul>
-      </div>
-
-      <div class="section" id="contact">
-        <h2>Contact</h2>
-        <p class="sub" style="margin-top: 8px;">
-          If you want the reference pack, SDK examples, or a contract-ready spec bundle, reach out:
-          <b>info@insightguard.tech</b>
-        </p>
-        <div class="pillrow" style="margin-top: 14px;">
-          <div class="pill">Reference Case (shadow)</div>
-          <div class="pill">SDK v0 (Node / Python)</div>
-          <div class="pill">Contract bundle</div>
-          <div class="pill">Ops runbooks</div>
-        </div>
-        <div class="pillrow" style="margin-top: 10px;">
-          <a class="pill" href="/blog/" style="text-decoration:none;">Read Notes →</a>
-        </div>
-      </div>
-
+      <!-- Footer -->
       <div class="foot">
-        <div>© <span id="y"></span> Insight Guard. All rights reserved.</div>
-        <div class="mini">Contract-first • Deterministic • Auditable • Kill-switch ready</div>
+        <div>© <span id="y"></span> Insight Guard</div>
+        <div>Contract-first • Deterministic • Auditable</div>
       </div>
     </div>
 
