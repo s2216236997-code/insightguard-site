@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>What Most AI Governance Frameworks Get Wrong — Insight Guard Notes</title>
+    <meta
+      name="description"
+      content="Most AI governance frameworks treat governance as documentation. The real failure mode is runtime: control, constraints, auditability, and fail-safe behavior in production."
+    />
+    <meta name="robots" content="index,follow" />
+    <link
+      rel="canonical"
+      href="https://insightguard.tech/blog/2026-02-what-most-ai-governance-frameworks-get-wrong.html"
+    />
+
+    <style>
+      :root {
+        --bg: #ffffff;
+        --text: #111111;
+        --muted: #666666;
+        --line: #e9e9ef;
+        --codebg: #0b1020;
+        --codefg: #dbe3ff;
+        --chipbg: #f6f7fb;
+        --chipfg: #333333;
+        --calloutbg: #fbfbfe;
+        --link: #2f5cff;
+        --max: 860px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+          Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.65;
+      }
+
+      a {
+        color: var(--link);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .wrap {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 28px 18px 56px;
+      }
+
+      .crumb {
+        font-size: 14px;
+        color: var(--muted);
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 18px;
+      }
+
+      .crumb a {
+        color: var(--muted);
+      }
+
+      h1 {
+        font-size: 34px;
+        line-height: 1.2;
+        margin: 10px 0 10px;
+        letter-spacing: -0.02em;
+      }
+
+      .meta {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        align-items: center;
+        color: var(--muted);
+        font-size: 14px;
+        margin: 0 0 18px;
+      }
+
+      .lead {
+        font-size: 18px;
+        color: #1b1b1b;
+        margin: 14px 0 22px;
+      }
+
+      .chips {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin: 0 0 18px;
+      }
+
+      .chip {
+        font-size: 12px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: var(--chipbg);
+        color: var(--chipfg);
+        border: 1px solid var(--line);
+      }
+
+      hr {
+        border: none;
+        border-top: 1px solid var(--line);
+        margin: 22px 0;
+      }
+
+      .callout {
+        border: 1px solid var(--line);
+        background: var(--calloutbg);
+        padding: 14px 14px;
+        border-radius: 12px;
+        margin: 18px 0;
+      }
+
+      .callout strong {
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      pre {
+        background: var(--codebg);
+        color: var(--codefg);
+        padding: 14px 14px;
+        border-radius: 12px;
+        overflow-x: auto;
+        margin: 16px 0;
+      }
+
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+          "Courier New", monospace;
+        font-size: 13px;
+      }
+
+      footer {
+        margin-top: 34px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .sig {
+        margin-top: 8px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <div class="crumb">
+        <a href="https://insightguard.tech/">Insight Guard</a>
+        <span>›</span>
+        <a href="https://insightguard.tech/blog/">Notes</a>
+      </div>
+
+      <h1>What Most AI Governance Frameworks Get Wrong</h1>
+
+      <div class="meta">
+        <span>2026-02</span>
+        <span>•</span>
+        <span>Notes</span>
+        <span>•</span>
+        <span>Infrastructure, not policy</span>
+      </div>
+
+      <p class="lead">
+        Most AI governance frameworks treat governance as a documentation problem. The real failure mode is
+        runtime: control, constraints, auditability, and fail-safe behavior in production.
+      </p>
+
+      <div class="chips">
+        <span class="chip">AI governance</span>
+        <span class="chip">runtime control</span>
+        <span class="chip">auditability</span>
+        <span class="chip">determinism</span>
+        <span class="chip">fail-safe</span>
+      </div>
+
+      <hr />
+
+      <p>
+        Most AI governance frameworks start in the same place: policies, principles, and compliance
+        checklists. That feels reasonable. It’s also where most of them quietly fail.
+      </p>
+
+      <div class="callout">
+        <strong>The core mistake</strong>
+        They treat governance as a document problem, not a runtime problem.
+      </div>
+
+      <p>
+        Policies describe <em>intent</em>. Frameworks describe <em>expectations</em>. But AI systems don’t
+        execute on intent — they execute at runtime.
+      </p>
+
+      <p>When something goes wrong in production, no one asks:</p>
+
+      <pre><code>"Did we write the right policy?"</code></pre>
+
+      <p>They ask:</p>
+      <ul>
+        <li>Why did the system behave this way at this moment?</li>
+        <li>Could we have prevented it?</li>
+        <li>Can we explain the decision after the fact?</li>
+        <li>Could we have stopped it without shutting everything down?</li>
+      </ul>
+
+      <p>
+        Most frameworks have no answer, because they stop at design-time. Governance doesn’t fail in
+        theory. It fails in production.
+      </p>
+
+      <hr />
+
+      <p>
+        Hallucinations. Unsafe outputs. Unexpected, non-deterministic agent behavior. These aren’t “policy
+        violations” — they’re runtime states.
+      </p>
+
+      <p>And governance that cannot:</p>
+      <ul>
+        <li>observe behavior,</li>
+        <li>constrain execution,</li>
+        <li>explain decisions,</li>
+        <li>and fail safely</li>
+      </ul>
+
+      <p>is not governance. It’s documentation.</p>
+
+      <hr />
+
+      <p>
+        What’s missing in most AI governance efforts is infrastructure. Not dashboards. Not ethics boards.
+        Not longer PDFs.
+      </p>
+
+      <div class="callout">
+        <strong>The missing layer</strong>
+        Governance must be able to operate at runtime — like a control plane — with stable semantics and
+        auditable outputs.
+      </div>
+
+      <p>Infrastructure that answers questions like:</p>
+      <ul>
+        <li>What decision was made, by which system, under which constraints?</li>
+        <li>What rules were enforced at runtime?</li>
+        <li>What was logged, what was blocked, what was allowed?</li>
+        <li>What happens when enforcement fails?</li>
+      </ul>
+
+      <p>
+        Until governance can operate at that level, it remains advisory — not accountable.
+      </p>
+
+      <hr />
+
+      <p>
+        AI governance is not a policy problem. It’s a control-plane problem. And control planes are built,
+        not declared.
+      </p>
+
+      <div class="callout">
+        <strong>Contract reminder</strong>
+        If your governance framework cannot explain a single real production incident end-to-end, it
+        doesn’t matter how well written it is. Because the system is already running.
+      </div>
+
+      <footer>
+        <div>
+          Insight Guard Notes — contract-first AI governance at runtime. Deterministic decisions, auditable
+          outputs, tenant isolation, and kill-switch ready — without storing raw user data by default.
+        </div>
+        <div class="sig">© 2026 Insight Guard</div>
+      </footer>
+    </div>
+  </body>
+</html>
