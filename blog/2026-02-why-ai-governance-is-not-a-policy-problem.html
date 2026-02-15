@@ -14,36 +14,42 @@
 
     <style>
       :root {
-        --bg: #ffffff;
-        --text: #111111;
-        --muted: #666666;
-        --line: #e9e9ef;
-        --codebg: #0b1020;
-        --codefg: #dbe3ff;
-        --chipbg: #f6f7fb;
-        --chipfg: #333;
-        --link: #111;
+        --bg: #04040d;
+        --text: #e9eefc;
+        --muted: #98a2c3;
+        --line: rgba(255, 255, 255, 0.08);
+        --accent: #7f8cff;
+
+        --codebg: rgba(255, 255, 255, 0.04);
+        --codefg: var(--text);
+
+        --chipbg: rgba(120, 140, 255, 0.12);
+        --chipfg: var(--accent);
+
+        --link: var(--accent);
         --max: 860px;
       }
 
       * { box-sizing: border-box; }
 
+      html, body { height: 100%; }
+
       body {
-  margin: 0;
-  color: var(--text);
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-  line-height: 1.65;
+        margin: 0;
+        color: var(--text);
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+        line-height: 1.65;
 
-  background:
-    radial-gradient(1200px 700px at 20% 10%, rgba(80,110,255,0.25), transparent 55%),
-    radial-gradient(900px 600px at 80% 0%, rgba(140,60,255,0.20), transparent 55%),
-    radial-gradient(900px 700px at 50% 100%, rgba(0,200,255,0.10), transparent 60%),
-    linear-gradient(180deg,#070914 0%,#050611 55%,#04040d 100%);
-  background-attachment: fixed;
+        background:
+          radial-gradient(1200px 700px at 20% 10%, rgba(80,110,255,0.25), transparent 55%),
+          radial-gradient(900px 600px at 80% 0%, rgba(140,60,255,0.20), transparent 55%),
+          radial-gradient(900px 700px at 50% 100%, rgba(0,200,255,0.10), transparent 60%),
+          linear-gradient(180deg,#070914 0%,#050611 55%,#04040d 100%);
+        background-attachment: fixed;
 
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
 
       a { color: var(--link); text-decoration: none; }
       a:hover { text-decoration: underline; }
@@ -126,7 +132,7 @@
         padding: 14px 14px;
         border-radius: 14px;
         overflow: auto;
-        border: 1px solid rgba(132,145,255,0.18);
+        border: 1px solid var(--line);
         margin: 12px 0 18px;
         font-size: 13px;
         line-height: 1.55;
@@ -138,11 +144,12 @@
       }
 
       .callout {
+        border-left: 3px solid var(--accent);
         border: 1px solid var(--line);
-        background: #fafafa;
+        background: rgba(255, 255, 255, 0.03);
         padding: 14px 14px;
         border-radius: 14px;
-        color: #222;
+        color: var(--muted);
         margin: 14px 0 18px;
       }
 
@@ -170,7 +177,7 @@
   <body>
     <main class="wrap">
       <div class="crumb">
-        <a href="/">Insight Guard</a> &nbsp;/&nbsp; <a href="/blog/"><b>Notes</b></a>
+        <a href="/">Insight Guard</a> &nbsp;/&nbsp; <a href="/blog/index.html"><b>Notes</b></a>
       </div>
 
       <h1>Why AI Governance Is Not a Policy Problem</h1>
@@ -296,7 +303,7 @@
 
       <div class="footer">
         <div>
-          <a href="/blog/">← Back to Notes</a>
+          <a href="/blog/index.html">← Back to Notes</a>
         </div>
         <div>
           <span>Insight Guard · Docs = Contract</span>
