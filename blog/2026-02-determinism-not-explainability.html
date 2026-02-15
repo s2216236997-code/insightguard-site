@@ -1,226 +1,333 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>AI Governance Is About Determinism, Not Explainability</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="Why determinism and versioned behavior matter more than explainability for AI governance in production."
-  />
-  <meta name="robots" content="index,follow" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.65;
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 28px 20px 56px;
-      color: #111;
-      background: #fff;
-    }
-    a { color: #0055cc; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    <title>AI Governance Is About Determinism, Not Explainability | Insight Guard</title>
+    <meta
+      name="description"
+      content="Determinism and versioned behavior matter more than explainability for AI governance in production. Governance fails when behavior drifts without contract."
+    />
+    <meta name="robots" content="index,follow" />
+    <link
+      rel="canonical"
+      href="https://insightguard.tech/blog/2026-02-ai-governance-determinism-not-explainability.html"
+    />
 
-    h1 { font-size: 38px; margin: 0 0 10px; letter-spacing: -0.4px; }
-    h2 { font-size: 22px; margin: 42px 0 12px; letter-spacing: -0.2px; }
-    p { margin: 14px 0; }
+    <style>
+      :root {
+        --bg: #04040d;
+        --text: #e9eefc;
+        --muted: #98a2c3;
+        --line: rgba(255, 255, 255, 0.08);
+        --accent: #7f8cff;
 
-    .meta {
-      color: #666;
-      font-size: 0.95em;
-      margin-bottom: 18px;
-    }
+        --codebg: rgba(255, 255, 255, 0.04);
+        --codefg: var(--text);
 
-    .lead {
-      font-size: 18px;
-      font-weight: 650;
-      margin: 18px 0 24px;
-    }
+        --chipbg: rgba(120, 140, 255, 0.12);
+        --chipfg: var(--accent);
 
-    hr {
-      border: none;
-      border-top: 1px solid #eee;
-      margin: 34px 0;
-    }
+        --link: var(--accent);
+        --max: 860px;
+      }
 
-    ul { margin: 10px 0 0; padding-left: 18px; }
-    li { margin: 8px 0; }
+      * { box-sizing: border-box; }
 
-    .article-nav {
-      display: flex;
-      gap: 6px;
-      font-size: 13px;
-      color: #666;
-      margin: 6px 0 26px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .article-nav a {
-      color: #111;
-      font-weight: 650;
-      text-decoration: none;
-    }
+      html, body { height: 100%; }
 
-    .closing {
-      margin-top: 28px;
-      font-weight: 650;
-    }
+      body {
+        margin: 0;
+        color: var(--text);
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+        line-height: 1.65;
 
-    .closing-links {
-      margin-top: 12px;
-      font-size: 14px;
-    }
+        background:
+          radial-gradient(1200px 700px at 20% 10%, rgba(80,110,255,0.25), transparent 55%),
+          radial-gradient(900px 600px at 80% 0%, rgba(140,60,255,0.20), transparent 55%),
+          radial-gradient(900px 700px at 50% 100%, rgba(0,200,255,0.10), transparent 60%),
+          linear-gradient(180deg,#070914 0%,#050611 55%,#04040d 100%);
+        background-attachment: fixed;
 
-    @media (max-width: 520px) {
-      h1 { font-size: 32px; }
-    }
-  </style>
-</head>
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
 
-<body>
+      a { color: var(--link); text-decoration: none; }
+      a:hover { text-decoration: underline; }
 
-  <!-- Breadcrumb -->
-  <nav class="article-nav" aria-label="breadcrumb">
-    <a href="/">Insight Guard</a>
-    <span>/</span>
-    <a href="/blog/">Notes</a>
-  </nav>
+      .wrap {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 44px 20px 64px;
+      }
 
-  <!-- Title -->
-  <h1>AI Governance Is About Determinism, Not Explainability</h1>
-  <p class="meta">Published February 2026</p>
+      .crumb {
+        font-size: 14px;
+        color: var(--muted);
+        margin-bottom: 18px;
+      }
+      .crumb b { color: var(--text); font-weight: 650; }
 
-  <!-- Lead sentence -->
-  <p class="lead">
-    The real problem with AI governance is not that models are hard to explain — it’s that systems
-    are allowed to change behavior without notice.
-  </p>
+      h1 {
+        margin: 0 0 10px;
+        font-size: 46px;
+        line-height: 1.1;
+        letter-spacing: -0.7px;
+      }
 
-  <!-- Problem framing -->
-  <p>
-    Most discussions around AI governance obsess over <em>explainability</em>.
-    Why did the model say this? Which features mattered? Can we explain the reasoning step-by-step?
-  </p>
+      .meta {
+        margin: 0 0 18px;
+        color: var(--muted);
+        font-size: 14px;
+      }
 
-  <p>
-    These questions sound responsible — but they miss the operational failure mode.
-    In production systems, governance does not break because teams cannot explain outputs.
-    It breaks because <b>behavior drifts</b>.
-  </p>
+      .lead {
+        margin: 18px 0 18px;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 1.5;
+      }
 
-  <p>
-    Models are retrained. Prompts evolve. Policies are “updated”. Dependencies change silently.
-    And suddenly, the same input no longer leads to the same outcome.
-  </p>
+      p { margin: 14px 0; font-size: 16px; }
 
-  <hr />
+      h2 {
+        margin: 28px 0 10px;
+        font-size: 26px;
+        letter-spacing: -0.2px;
+      }
 
-  <!-- Limits / failure mode -->
-  <h2>Explainability Does Not Prevent Drift</h2>
+      ul {
+        margin: 10px 0 16px;
+        padding-left: 20px;
+      }
 
-  <p>
-    Explainability is retrospective. It tells you <em>why something happened after the fact</em>.
-    It does not guarantee that the same thing will happen again tomorrow.
-  </p>
+      li { margin: 8px 0; }
 
-  <p>
-    A perfectly explainable system can still change thresholds without notice, rename internal
-    rules, introduce new edge cases, and behave differently across environments.
-  </p>
+      .hr {
+        height: 1px;
+        background: var(--line);
+        margin: 26px 0;
+      }
 
-  <p>
-    From a governance perspective, this is catastrophic. Audits fail not because reasons are unclear —
-    they fail because <b>behavior is unstable</b>.
-  </p>
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 10px;
+      }
 
-  <hr />
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: var(--chipbg);
+        color: var(--chipfg);
+        font-size: 13px;
+        border: 1px solid var(--line);
+      }
 
-  <!-- Reframe -->
-  <h2>Determinism Is the Real Governance Primitive</h2>
+      pre {
+        background: var(--codebg);
+        color: var(--codefg);
+        padding: 14px 14px;
+        border-radius: 14px;
+        overflow: auto;
+        border: 1px solid var(--line);
+        margin: 12px 0 18px;
+        font-size: 13px;
+        line-height: 1.55;
+      }
 
-  <p>
-    Infrastructure systems are governed by constraints, not explanations.
-  </p>
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.95em;
+      }
 
-  <p>
-    We do not ask databases to “explain” why they returned a row. We rely on the fact that queries
-    are deterministic, schemas are versioned, and breaking changes are explicit.
-    AI governance must work the same way.
-  </p>
+      .callout {
+        border-left: 3px solid var(--accent);
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.03);
+        padding: 14px 14px;
+        border-radius: 14px;
+        color: var(--muted);
+        margin: 14px 0 18px;
+      }
 
-  <p>
-    Determinism means:
-  </p>
+      .footer {
+        margin-top: 34px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        flex-wrap: wrap;
+        color: var(--muted);
+        font-size: 13px;
+      }
 
-  <ul>
-    <li>The same class of input produces the same class of decision</li>
-    <li>Behavior changes only via version bumps</li>
-    <li>Old versions remain valid and replayable</li>
-  </ul>
+      .footer a { color: var(--muted); }
 
-  <p>
-    Without this, no amount of interpretability can create trust.
-  </p>
+      @media (max-width: 720px) {
+        h1 { font-size: 36px; }
+        .lead { font-size: 17px; }
+      }
+    </style>
+  </head>
 
-  <hr />
+  <body>
+    <main class="wrap">
+      <div class="crumb">
+        <a href="/">Insight Guard</a> &nbsp;/&nbsp; <a href="/blog/index.html"><b>Notes</b></a>
+      </div>
 
-  <h2>Governance Fails When Behavior Is Not a Contract</h2>
+      <h1>AI Governance Is About Determinism, Not Explainability</h1>
+      <p class="meta">Feb 2026 · 5 min read</p>
 
-  <p>
-    Policy documents describe intent. Infrastructure enforces reality.
-  </p>
+      <p class="lead">
+        The real problem with AI governance is not that models are hard to explain — it’s that systems
+        are allowed to change behavior without notice.
+      </p>
 
-  <p>
-    If governance rules are not versioned, enumerable, and stable over time, then they are not
-    governance — they are aspiration.
-  </p>
+      <p>
+        Most discussions around AI governance obsess over <i>explainability</i>.
+        Why did the model say this? Which features mattered? Can we explain the reasoning step-by-step?
+      </p>
 
-  <p>
-    True governance systems treat behavior as a <b>contract</b>, not a guideline:
-  </p>
+      <p>
+        These questions sound responsible — but they miss the operational failure mode.
+        In production systems, governance does not break because teams cannot explain outputs.
+        It breaks because <b>behavior drifts</b>.
+      </p>
 
-  <ul>
-    <li>Decisions are finite and known</li>
-    <li>Reasons are enumerable and non-renamable</li>
-    <li>Version changes are explicit events</li>
-  </ul>
+      <p>
+        Models are retrained. Prompts evolve. Policies are “updated”. Dependencies change silently.
+        And suddenly, the same input no longer leads to the same outcome.
+      </p>
 
-  <p>
-    Anything else scales poorly under scrutiny.
-  </p>
+      <div class="chips" aria-label="tags">
+        <span class="chip">Determinism</span>
+        <span class="chip">Versioning</span>
+        <span class="chip">Runtime control</span>
+        <span class="chip">Auditability</span>
+        <span class="chip">Contract layer</span>
+      </div>
 
-  <hr />
+      <div class="hr"></div>
 
-  <h2>The Infrastructure View</h2>
+      <h2>Explainability does not prevent drift</h2>
 
-  <p>
-    Seen this way, explainability becomes secondary. Useful — yes. Foundational — no.
-  </p>
+      <p>
+        Explainability is retrospective. It tells you <i>why something happened after the fact</i>.
+        It does not guarantee that the same thing will happen again tomorrow.
+      </p>
 
-  <p>
-    The foundation is deterministic behavior, contracted semantics, auditable version history,
-    and kill-switchable enforcement.
-  </p>
+      <p>
+        A perfectly explainable system can still change thresholds without notice, rename internal
+        rules, introduce new edge cases, and behave differently across environments.
+      </p>
 
-  <p>
-    This is why AI governance is infrastructure, not policy.
-    And why systems that rely on documents instead of constraints will continue to fail — predictably.
-  </p>
+      <p>
+        From a governance perspective, this is catastrophic. Audits fail not because reasons are unclear —
+        they fail because <b>behavior is unstable</b>.
+      </p>
 
-  <hr />
+      <div class="callout">
+        <b>Governance doesn’t need perfect explanations.</b><br/>
+        Governance needs stable behavior you can replay, measure, and defend.
+      </div>
 
-  <!-- Closing -->
-  <p class="closing">
-    This is why Insight Guard treats governance as infrastructure: enforced at runtime, versioned by contract,
-    and auditable by design.
-  </p>
+      <h2>Determinism is the governance primitive</h2>
 
-  <p class="closing-links">
-    → <a href="/#contract">View the contract surface</a><br />
-    → <a href="/blog/">Back to Notes</a>
-  </p>
+      <p>
+        Infrastructure systems are governed by constraints, not explanations.
+      </p>
 
-</body>
+      <p>
+        We do not ask databases to “explain” why they returned a row. We rely on the fact that queries
+        are deterministic, schemas are versioned, and breaking changes are explicit.
+        AI governance must work the same way.
+      </p>
+
+      <p>Determinism means:</p>
+
+      <ul>
+        <li>The same class of input produces the same class of decision</li>
+        <li>Behavior changes only via version bumps</li>
+        <li>Old versions remain valid and replayable</li>
+      </ul>
+
+      <p>
+        Without this, no amount of interpretability can create trust.
+      </p>
+
+      <h2>Governance fails when behavior is not a contract</h2>
+
+      <p>
+        Policy documents describe intent. Infrastructure enforces reality.
+      </p>
+
+      <p>
+        If governance rules are not versioned, enumerable, and stable over time, then they are not
+        governance — they are aspiration.
+      </p>
+
+      <p>
+        True governance systems treat behavior as a <b>contract</b>, not a guideline:
+      </p>
+
+      <ul>
+        <li>Decisions are finite and known</li>
+        <li>Reasons are enumerable and non-renamable</li>
+        <li>Version changes are explicit events</li>
+      </ul>
+
+      <pre><code>{
+  "decision": "allow | block | cooldown | no_op",
+  "reason_code": "STABLE_ENUM",
+  "audit_id": "aud_...",
+  "behavior_version": "guard.v1.contract"
+}</code></pre>
+
+      <p>
+        Anything else scales poorly under scrutiny.
+      </p>
+
+      <h2>The infrastructure view</h2>
+
+      <p>
+        Seen this way, explainability becomes secondary. Useful — yes. Foundational — no.
+      </p>
+
+      <p>
+        The foundation is deterministic behavior, contracted semantics, auditable version history,
+        and kill-switchable enforcement.
+      </p>
+
+      <p>
+        This is why AI governance is infrastructure, not policy.
+        And why systems that rely on documents instead of constraints will continue to fail — predictably.
+      </p>
+
+      <div class="hr"></div>
+
+      <p>
+        This is why Insight Guard treats governance as infrastructure: enforced at runtime, versioned by contract,
+        and auditable by design.
+      </p>
+
+      <div class="footer">
+        <div>
+          <a href="/#contract">→ View the contract surface</a>
+          <span style="opacity:.55;">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+          <a href="/blog/index.html">← Back to Notes</a>
+        </div>
+        <div>
+          Insight Guard · Contract-first AI Governance
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
