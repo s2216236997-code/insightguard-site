@@ -17,17 +17,12 @@
 
     <style>
       :root {
-        --bg: #ffffff;
-        --text: #111111;
-        --muted: #666666;
-        --line: #e9e9ef;
-        --codebg: #0b1020;
-        --codefg: #dbe3ff;
-        --chipbg: #f6f7fb;
-        --chipfg: #333333;
-        --calloutbg: #f7f7fb;
-        --calloutfg: #111111;
-        --link: #2f5cff;
+        --bg1: #0f1220;
+        --bg2: #0b0e18;
+        --text: #e9eefc;
+        --muted: #98a2c3;
+        --line: rgba(255, 255, 255, 0.08);
+        --accent: #7f8cff;
       }
 
       * {
@@ -36,17 +31,17 @@
 
       body {
         margin: 0;
-        background: var(--bg);
+        background: linear-gradient(180deg, var(--bg1), var(--bg2));
         color: var(--text);
-        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
-          "Apple Color Emoji", "Segoe UI Emoji";
-        line-height: 1.55;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+        line-height: 1.6;
       }
 
       a {
-        color: var(--link);
+        color: var(--accent);
         text-decoration: none;
       }
+
       a:hover {
         text-decoration: underline;
       }
@@ -54,16 +49,13 @@
       .wrap {
         max-width: 860px;
         margin: 0 auto;
-        padding: 28px 18px 64px;
+        padding: 40px 20px 80px;
       }
 
       .crumb {
-        display: flex;
-        align-items: center;
-        gap: 10px;
         font-size: 14px;
         color: var(--muted);
-        margin-bottom: 18px;
+        margin-bottom: 20px;
       }
 
       .crumb a {
@@ -72,112 +64,89 @@
 
       h1 {
         font-size: 34px;
-        line-height: 1.15;
+        margin: 0 0 12px;
         letter-spacing: -0.02em;
-        margin: 0 0 10px;
       }
 
       .meta {
         color: var(--muted);
         font-size: 14px;
-        margin: 0 0 14px;
+        margin-bottom: 16px;
       }
 
       .lead {
         font-size: 18px;
-        margin: 0 0 16px;
+        margin-bottom: 20px;
       }
 
       .chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin: 0 0 18px;
+        margin-bottom: 20px;
       }
 
       .chip {
-        display: inline-flex;
-        align-items: center;
-        padding: 6px 10px;
-        background: var(--chipbg);
-        color: var(--chipfg);
+        display: inline-block;
+        font-size: 12px;
         border: 1px solid var(--line);
+        padding: 6px 10px;
         border-radius: 999px;
-        font-size: 13px;
+        margin-right: 8px;
+        color: var(--muted);
       }
 
       hr {
         border: none;
         border-top: 1px solid var(--line);
-        margin: 22px 0;
+        margin: 28px 0;
       }
 
       h2 {
         font-size: 20px;
-        margin: 22px 0 10px;
-        letter-spacing: -0.01em;
+        margin-top: 28px;
       }
 
       p {
-        margin: 12px 0;
+        margin: 14px 0;
       }
 
       ul {
-        margin: 10px 0 10px 20px;
+        margin-left: 20px;
       }
 
       li {
-        margin: 6px 0;
+        margin: 8px 0;
       }
 
       .callout {
         border: 1px solid var(--line);
-        background: var(--calloutbg);
-        color: var(--calloutfg);
-        border-radius: 14px;
-        padding: 14px 14px;
-        margin: 16px 0;
+        padding: 16px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.02);
+        margin: 22px 0;
       }
 
       pre {
-        background: var(--codebg);
-        color: var(--codefg);
-        padding: 14px 14px;
-        border-radius: 14px;
-        overflow: auto;
-        font-size: 13px;
-        line-height: 1.45;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-      }
-
-      code {
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-          "Courier New", monospace;
+        background: #0a0d18;
+        padding: 16px;
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        overflow-x: auto;
       }
 
       footer {
-        margin-top: 34px;
-        padding-top: 18px;
+        margin-top: 50px;
+        padding-top: 20px;
         border-top: 1px solid var(--line);
         color: var(--muted);
         font-size: 13px;
-      }
-
-      .sig {
-        margin-top: 8px;
       }
     </style>
   </head>
 
   <body>
     <main class="wrap">
-      <nav class="crumb">
-        <a href="/">Insight Guard</a>
-        <span>›</span>
-        <a href="/blog/">Notes</a>
-        <span>›</span>
-        <span>Why AI Governance Fails in Production</span>
-      </nav>
+      <div class="crumb">
+        <a href="/">Home</a> › <a href="/blog/">Notes</a> › Why AI Governance Fails in Production
+      </div>
 
       <h1>Why AI Governance Fails in Production</h1>
       <div class="meta">Feb 2026 · 4 min read</div>
@@ -188,22 +157,24 @@
       </p>
 
       <div class="chips">
-        <span class="chip">AI governance</span>
-        <span class="chip">runtime control</span>
-        <span class="chip">production reliability</span>
+        <span class="chip">AI Governance</span>
+        <span class="chip">Runtime Control</span>
+        <span class="chip">Production Reliability</span>
       </div>
 
       <hr />
 
       <h2>The failure mode is predictable</h2>
+
       <p>
         Governance frameworks are usually well written. They define values, principles, and intent.
         But production systems don’t fail on intent — they fail on runtime behavior.
       </p>
+
       <p>
         In the real world, an AI system is a dependency inside a pipeline: inputs change, latency
-        spikes, models drift, prompts get tweaked, upstream services retry, and “edge cases” become
-        normal traffic.
+        spikes, models drift, prompts get tweaked, upstream services retry, and “edge cases”
+        become normal traffic.
       </p>
 
       <div class="callout">
@@ -212,46 +183,50 @@
       </div>
 
       <h2>Documentation can’t stop a bad output</h2>
+
       <p>
-        A governance doc can tell you what <em>should</em> happen. It cannot guarantee what
-        <em>will</em> happen at 2:13am when a customer report is being generated, a tool call times
-        out, and the model confidently fills in missing facts.
+        A governance document can tell you what <em>should</em> happen. It cannot guarantee what
+        <em>will</em> happen at 2:13am when a customer report is generated and the model fills in
+        missing facts with confidence.
       </p>
+
       <p>
-        Production needs mechanisms with stable semantics — not guidelines that require humans to
-        interpret them each time.
+        Production requires mechanisms with stable semantics — not guidelines that require human
+        interpretation every time.
       </p>
 
       <h2>What production-grade governance looks like</h2>
-      <p>At minimum, governance must be able to operate like an API in the critical path:</p>
+
       <ul>
-        <li><strong>Deterministic decisions</strong> (same inputs → same outcome, under a frozen behavior version)</li>
-        <li><strong>Auditable outputs</strong> (machine-readable reason codes + an audit ID you can replay)</li>
-        <li><strong>Fail-safe defaults</strong> (clear fail-open / fail-closed behavior, not “we’ll review later”)</li>
-        <li><strong>Kill-switch as a state</strong> (tenant-level off/shadow/enforce that is legal and expected)</li>
-        <li><strong>Minimal data surface</strong> (no raw text by default; store hashes/decisions/evidence)</li>
+        <li><strong>Deterministic decisions</strong> (same inputs → same outcome under frozen behavior version)</li>
+        <li><strong>Auditable outputs</strong> (machine-readable reason codes + replayable audit IDs)</li>
+        <li><strong>Fail-safe defaults</strong> (clear fail-open / fail-closed semantics)</li>
+        <li><strong>Kill-switch as a state</strong> (off / shadow / enforce is legal and expected)</li>
+        <li><strong>Minimal data surface</strong> (no raw text by default — only hashes and evidence)</li>
       </ul>
 
       <h2>The contract is the product</h2>
+
       <p>
-        If a customer can’t predict what your governance will do in a given situation, they can’t
-        trust it — and they definitely can’t put it into production.
+        If customers can’t predict what your governance will do in a given scenario, they cannot
+        put it into production.
       </p>
+
       <p>
-        That’s why the contract matters more than the “smartness.” A contract tells you:
-        <strong>when it will allow</strong>, <strong>when it will block</strong>,
-        <strong>when it may cooldown</strong>, and <strong>when it will no-op</strong> — with stable semantics.
+        The contract defines when it will allow, when it will block, when it may cooldown, and
+        when it will no-op — with stable semantics.
       </p>
 
       <hr />
 
       <div class="callout">
         <strong>Insight Guard view:</strong><br />
-        AI governance is infrastructure, not policy. If it can’t run at runtime with deterministic,
-        auditable decisions — it will fail in production.
+        AI governance is infrastructure, not policy. If it cannot execute deterministic,
+        auditable decisions at runtime, it will fail in production.
       </div>
 
-      <h2>Example: treat governance like an endpoint</h2>
+      <h2>Example: Governance as an endpoint</h2>
+
       <pre><code>{
   "decision": "cooldown",
   "reason_code": "COOLDOWN_WINDOW_ACTIVE",
@@ -260,11 +235,8 @@
 }</code></pre>
 
       <footer>
-        <div>
-          Insight Guard Notes — contract-first AI runtime governance: deterministic decisions, auditable
-          outputs, tenant isolation, and kill-switch-ready control.
-        </div>
-        <div class="sig">© 2026 Insight Guard</div>
+        Insight Guard Notes — contract-first AI runtime governance.
+        Deterministic decisions. Auditable outputs. Tenant isolation. Kill-switch-ready control.
       </footer>
     </main>
   </body>
