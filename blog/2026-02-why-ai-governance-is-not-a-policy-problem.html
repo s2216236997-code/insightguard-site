@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Why AI Governance Is Not a Policy Problem — Insight Guard Notes</title>
+    <title>Why AI Governance Is Not a Policy Problem | Insight Guard</title>
     <meta
       name="description"
-      content="AI governance fails when treated as policy. The real work is infrastructure: deterministic runtime controls, contract-level semantics, and auditable evidence."
+      content="Governance fails when treated as policy. Real AI governance is runtime infrastructure: deterministic decisions, versioned semantics, and auditable evidence."
     />
     <meta name="robots" content="index,follow" />
     <link rel="canonical" href="https://insightguard.tech/blog/2026-02-ai-governance-not-policy-problem.html" />
@@ -180,11 +180,12 @@
         <a href="/">Insight Guard</a> &nbsp;/&nbsp; <a href="/blog/index.html"><b>Notes</b></a>
       </div>
 
-      <h1>Why AI Governance Is Not a Policy Problem</h1>
-      <p class="meta">Published February 2026 · 5 min read</p>
+      <h1>AI Governance Is Not a Policy Problem</h1>
+      <p class="meta">Feb 2026 · 5 min read</p>
 
       <p class="lead">
-        If governance depends on “better policies,” it will fail at runtime. Governance that works is infrastructure: deterministic controls, stable semantics, and auditable evidence.
+        Governance fails when treated as policy.<br/>
+        Real governance is runtime infrastructure: deterministic decisions, versioned semantics, and auditable evidence.
       </p>
 
       <p>
@@ -198,6 +199,7 @@
         <span class="chip">Infrastructure</span>
         <span class="chip">Auditability</span>
         <span class="chip">Runtime control</span>
+        <span class="chip">Contract layer</span>
       </div>
 
       <div class="hr"></div>
@@ -227,7 +229,8 @@
       </ul>
 
       <div class="callout">
-        <b>Infrastructure rule:</b> if it can’t be expressed as a stable, machine-auditable contract, it will drift into “best effort.”
+        <b>Infrastructure rule:</b><br/>
+        If it cannot be expressed as a stable, machine-auditable contract, it will degrade into best effort.
       </div>
 
       <h2>Governance is a runtime API</h2>
@@ -249,7 +252,7 @@
   "audit_id": "aud_...",
   "behavior_version": "guard.v1.contract",
   "policy_mode": "enforce | shadow | off",
-  "fail_safe": "open | closed"
+  "fail_safe_mode": "open | closed"
 }</code></pre>
 
       <p>
@@ -306,7 +309,7 @@
           <a href="/blog/index.html">← Back to Notes</a>
         </div>
         <div>
-          <span>Insight Guard · Docs = Contract</span>
+          Insight Guard · Contract-first AI Governance
         </div>
       </div>
     </main>
