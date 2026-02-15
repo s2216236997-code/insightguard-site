@@ -1,263 +1,385 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>AI Governance Is Infrastructure, Not Policy</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Why AI governance must be built like infrastructure, not written like policy documents." />
-  <meta name="robots" content="index,follow" />
-  <style>
-    :root{
-      --bg:#ffffff;
-      --text:#111;
-      --muted:#666;
-      --line:#eee;
-      --link:#0055cc;
-    }
-    body{
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.65;
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 28px 20px 56px;
-      color: var(--text);
-      background: var(--bg);
-    }
-    a{ color: var(--link); text-decoration: none; }
-    a:hover{ text-decoration: underline; }
-    h1,h2{ line-height: 1.25; }
-    h1{ margin: 0 0 10px; font-size: 38px; letter-spacing: -0.4px; }
-    h2{ margin: 42px 0 12px; font-size: 22px; letter-spacing: -0.2px; }
-    p{ margin: 14px 0; }
-    p.meta{ color: var(--muted); font-size: 0.95em; margin: 0 0 18px; }
-    hr{ border: none; border-top: 1px solid var(--line); margin: 34px 0; }
-    ul{ margin: 10px 0 0; padding-left: 18px; }
-    li{ margin: 8px 0; }
-    .article-nav{
-      display:flex;
-      align-items:center;
-      gap:6px;
-      font-size: 13px;
-      color: var(--muted);
-      margin: 6px 0 26px;
-    }
-    .article-nav a{
-      color: var(--text);
-      font-weight: 650;
-      text-decoration: none;
-    }
-    .article-nav .sep{ color: #aaa; margin: 0 2px; }
-    .lead{
-      font-size: 18px;
-      font-weight: 650;
-      margin: 18px 0 18px;
-    }
-    .closing{
-      margin-top: 28px;
-      font-weight: 650;
-    }
-    .closing-links{
-      margin-top: 12px;
-      font-size: 14px;
-    }
-    @media (max-width: 520px){
-      h1{ font-size: 32px; }
-    }
-  </style>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<body>
+    <title>AI Governance Is Infrastructure, Not Policy | Insight Guard</title>
+    <meta
+      name="description"
+      content="AI governance must be built like infrastructure, not written like policy: deterministic decisions, versioned behavior, and auditable evidence at runtime."
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://insightguard.tech/blog/2026-02-ai-governance-infrastructure-not-policy.html" />
 
-  <nav class="article-nav" aria-label="breadcrumb">
-    <a href="/">Insight Guard</a>
-    <span class="sep">/</span>
-    <a href="/blog/">Notes</a>
-  </nav>
+    <style>
+      :root {
+        --bg: #04040d;
+        --text: #e9eefc;
+        --muted: #98a2c3;
+        --line: rgba(255, 255, 255, 0.08);
+        --accent: #7f8cff;
 
-  <h1>AI Governance Is Infrastructure, Not Policy</h1>
-  <p class="meta">Published February 2026</p>
+        --codebg: rgba(255, 255, 255, 0.04);
+        --codefg: var(--text);
 
-  <p class="lead">
-    AI governance fails not because teams lack intent — but because systems lack constraints.
-  </p>
+        --chipbg: rgba(120, 140, 255, 0.12);
+        --chipfg: var(--accent);
 
-  <p>
-    Most AI governance today is written like policy documents.
-    That is the core problem.
-  </p>
+        --link: var(--accent);
+        --max: 860px;
+      }
 
-  <p>
-    Policies describe expected behavior.
-    Infrastructure constrains actual behavior.
-  </p>
+      * { box-sizing: border-box; }
 
-  <p>
-    AI systems do not fail because teams lack good intentions.
-    They fail because complex systems inevitably drift, degrade, and behave in unexpected ways.
-  </p>
+      html, body { height: 100%; }
 
-  <hr />
+      body {
+        margin: 0;
+        color: var(--text);
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+        line-height: 1.65;
 
-  <h2>The Limits of Policy-Based Governance</h2>
+        background:
+          radial-gradient(1200px 700px at 20% 10%, rgba(80,110,255,0.25), transparent 55%),
+          radial-gradient(900px 600px at 80% 0%, rgba(140,60,255,0.20), transparent 55%),
+          radial-gradient(900px 700px at 50% 100%, rgba(0,200,255,0.10), transparent 60%),
+          linear-gradient(180deg,#070914 0%,#050611 55%,#04040d 100%);
+        background-attachment: fixed;
 
-  <p>
-    Policy-based governance assumes that humans will consistently interpret rules,
-    follow procedures, and intervene correctly when something goes wrong.
-  </p>
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
 
-  <p>
-    This assumption breaks down at scale.
-  </p>
+      a { color: var(--link); text-decoration: none; }
+      a:hover { text-decoration: underline; }
 
-  <p>
-    As AI systems become more autonomous, more adaptive, and more deeply embedded in
-    production workflows, governance that relies on documentation and process becomes fragile.
-  </p>
+      .wrap {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 44px 20px 64px;
+      }
 
-  <p>
-    When an incident happens, policies can explain what should have happened.
-    They cannot explain what actually happened.
-  </p>
+      .crumb {
+        font-size: 14px;
+        color: var(--muted);
+        margin-bottom: 18px;
+      }
+      .crumb b { color: var(--text); font-weight: 650; }
 
-  <hr />
+      h1 {
+        margin: 0 0 10px;
+        font-size: 46px;
+        line-height: 1.1;
+        letter-spacing: -0.7px;
+      }
 
-  <h2>Governance Is a Systems Problem</h2>
+      .meta {
+        margin: 0 0 18px;
+        color: var(--muted);
+        font-size: 14px;
+      }
 
-  <p>
-    AI governance is not primarily a legal problem.
-    It is not a compliance checkbox.
-  </p>
+      .lead {
+        margin: 18px 0 18px;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 1.5;
+      }
 
-  <p>
-    It is a systems engineering problem.
-  </p>
+      p { margin: 14px 0; font-size: 16px; }
 
-  <p>
-    The key questions are not:
-  </p>
+      h2 {
+        margin: 28px 0 10px;
+        font-size: 26px;
+        letter-spacing: -0.2px;
+      }
 
-  <ul>
-    <li>Did the team follow the right procedures?</li>
-    <li>Was the policy reviewed and approved?</li>
-  </ul>
+      ul {
+        margin: 10px 0 16px;
+        padding-left: 20px;
+      }
 
-  <p>
-    The real questions are:
-  </p>
+      li { margin: 8px 0; }
 
-  <ul>
-    <li>Can the system’s behavior be predicted?</li>
-    <li>Can decisions be audited without accessing raw user data?</li>
-    <li>Can behavior changes be detected, frozen, or rolled back?</li>
-  </ul>
+      .hr {
+        height: 1px;
+        background: var(--line);
+        margin: 26px 0;
+      }
 
-  <p>
-    These are infrastructure questions.
-  </p>
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 10px;
+      }
 
-  <hr />
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: var(--chipbg);
+        color: var(--chipfg);
+        font-size: 13px;
+        border: 1px solid var(--line);
+      }
 
-  <h2>Why Determinism Comes First</h2>
+      pre {
+        background: var(--codebg);
+        color: var(--codefg);
+        padding: 14px 14px;
+        border-radius: 14px;
+        overflow: auto;
+        border: 1px solid var(--line);
+        margin: 12px 0 18px;
+        font-size: 13px;
+        line-height: 1.55;
+      }
 
-  <p>
-    Without deterministic behavior, audit logs are just narratives written after the fact.
-  </p>
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.95em;
+      }
 
-  <p>
-    If the same input can produce different outcomes without an explicit version change,
-    then responsibility becomes impossible to assign.
-  </p>
+      .callout {
+        border-left: 3px solid var(--accent);
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.03);
+        padding: 14px 14px;
+        border-radius: 14px;
+        color: var(--muted);
+        margin: 14px 0 18px;
+      }
 
-  <p>
-    Determinism does not mean rigidity.
-    It means that behavior changes are explicit, versioned, and intentional.
-  </p>
+      .footer {
+        margin-top: 34px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        flex-wrap: wrap;
+        color: var(--muted);
+        font-size: 13px;
+      }
 
-  <p>
-    Governance starts with the ability to say:
-  </p>
+      .footer a { color: var(--muted); }
 
-  <p><strong>
-    “This system behaved this way because this version made this decision under these constraints.”
-  </strong></p>
+      @media (max-width: 720px) {
+        h1 { font-size: 36px; }
+        .lead { font-size: 17px; }
+      }
+    </style>
+  </head>
 
-  <hr />
+  <body>
+    <main class="wrap">
+      <div class="crumb">
+        <a href="/">Insight Guard</a> &nbsp;/&nbsp; <a href="/blog/index.html"><b>Notes</b></a>
+      </div>
 
-  <h2>Infrastructure Enables Accountability</h2>
+      <h1>AI Governance Is Infrastructure, Not Policy</h1>
+      <p class="meta">Feb 2026 · 6 min read</p>
 
-  <p>
-    Infrastructure does not rely on trust.
-    It provides guarantees.
-  </p>
+      <p class="lead">
+        AI governance fails not because teams lack intent — but because systems lack constraints.
+      </p>
 
-  <p>
-    Well-designed infrastructure defines:
-  </p>
+      <p>
+        Most AI governance today is written like policy documents.
+        That is the core problem.
+      </p>
 
-  <ul>
-    <li>Clear control boundaries</li>
-    <li>Observable decision points</li>
-    <li>Known failure modes</li>
-  </ul>
+      <p>
+        Policies describe expected behavior.
+        Infrastructure constrains actual behavior.
+      </p>
 
-  <p>
-    This is what makes accountability possible.
-  </p>
+      <p>
+        AI systems do not fail because teams lack good intentions.
+        They fail because complex systems inevitably drift, degrade, and behave in unexpected ways.
+      </p>
 
-  <p>
-    Responsibility without control is just liability.
-  </p>
+      <div class="chips" aria-label="tags">
+        <span class="chip">Infrastructure</span>
+        <span class="chip">Runtime control</span>
+        <span class="chip">Determinism</span>
+        <span class="chip">Auditability</span>
+      </div>
 
-  <hr />
+      <div class="hr"></div>
 
-  <h2>What a Governable AI System Looks Like</h2>
+      <h2>The Limits of Policy-Based Governance</h2>
 
-  <p>
-    A governable AI system is one where:
-  </p>
+      <p>
+        Policy-based governance assumes that humans will consistently interpret rules,
+        follow procedures, and intervene correctly when something goes wrong.
+      </p>
 
-  <ul>
-    <li>Behavior is deterministic by default</li>
-    <li>Changes are explicit and versioned</li>
-    <li>Decisions are auditable without exposing raw user data</li>
-    <li>Failure modes are defined before incidents occur</li>
-  </ul>
+      <p>
+        This assumption breaks down at scale.
+      </p>
 
-  <p>
-    Anything less is governance theater.
-  </p>
+      <p>
+        As AI systems become more autonomous, more adaptive, and more deeply embedded in
+        production workflows, governance that relies on documentation and process becomes fragile.
+      </p>
 
-  <hr />
+      <p>
+        When an incident happens, policies can explain what should have happened.
+        They cannot explain what actually happened.
+      </p>
 
-  <h2>Closing Thought</h2>
+      <div class="hr"></div>
 
-  <p>
-    AI governance will not be solved by better documents.
-  </p>
+      <h2>Governance Is a Systems Problem</h2>
 
-  <p>
-    It will be solved by better system design.
-  </p>
+      <p>
+        AI governance is not primarily a legal problem.
+        It is not a compliance checkbox.
+      </p>
 
-  <p>
-    As AI systems become infrastructure, governance must become infrastructure too.
-  </p>
+      <p>
+        It is a systems engineering problem.
+      </p>
 
-  <p>
-    That shift is not optional.
-    It is overdue.
-  </p>
+      <p>
+        The key questions are not:
+      </p>
 
-  <hr />
+      <ul>
+        <li>Did the team follow the right procedures?</li>
+        <li>Was the policy reviewed and approved?</li>
+      </ul>
 
-  <p class="closing">
-    This is why Insight Guard treats governance as infrastructure: enforced at runtime, versioned by contract, and auditable by design.
-  </p>
+      <p>
+        The real questions are:
+      </p>
 
-  <p class="closing-links">
-    → <a href="/#contract">View the contract surface</a><br />
-    → <a href="/blog/">Back to Notes</a>
-  </p>
+      <ul>
+        <li>Can the system’s behavior be predicted?</li>
+        <li>Can decisions be audited without accessing raw user data?</li>
+        <li>Can behavior changes be detected, frozen, or rolled back?</li>
+      </ul>
 
-</body>
+      <p>
+        These are infrastructure questions.
+      </p>
+
+      <div class="callout">
+        <b>Infrastructure rule:</b><br/>
+        Responsibility without runtime control becomes liability.
+      </div>
+
+      <h2>Why Determinism Comes First</h2>
+
+      <p>
+        Without deterministic behavior, audit logs are just narratives written after the fact.
+      </p>
+
+      <p>
+        If the same input can produce different outcomes without an explicit version change,
+        then responsibility becomes impossible to assign.
+      </p>
+
+      <p>
+        Determinism does not mean rigidity.
+        It means that behavior changes are explicit, versioned, and intentional.
+      </p>
+
+      <p>
+        Governance starts with the ability to say:
+      </p>
+
+      <p><b>
+        “This system behaved this way because this version made this decision under these constraints.”
+      </b></p>
+
+      <div class="hr"></div>
+
+      <h2>Infrastructure Enables Accountability</h2>
+
+      <p>
+        Infrastructure does not rely on trust.
+        It provides guarantees.
+      </p>
+
+      <p>
+        Well-designed infrastructure defines:
+      </p>
+
+      <ul>
+        <li>Clear control boundaries</li>
+        <li>Observable decision points</li>
+        <li>Known failure modes</li>
+      </ul>
+
+      <p>
+        This is what makes accountability possible.
+      </p>
+
+      <p>
+        Responsibility without control is just liability.
+      </p>
+
+      <div class="hr"></div>
+
+      <h2>What a Governable AI System Looks Like</h2>
+
+      <p>
+        A governable AI system is one where:
+      </p>
+
+      <ul>
+        <li>Behavior is deterministic by default</li>
+        <li>Changes are explicit and versioned</li>
+        <li>Decisions are auditable without exposing raw user data</li>
+        <li>Failure modes are defined before incidents occur</li>
+      </ul>
+
+      <p>
+        Anything less is governance theater.
+      </p>
+
+      <div class="hr"></div>
+
+      <h2>Closing Thought</h2>
+
+      <p>
+        AI governance will not be solved by better documents.
+      </p>
+
+      <p>
+        It will be solved by better system design.
+      </p>
+
+      <p>
+        As AI systems become infrastructure, governance must become infrastructure too.
+      </p>
+
+      <p>
+        That shift is not optional.
+        It is overdue.
+      </p>
+
+      <div class="hr"></div>
+
+      <p>
+        This is why Insight Guard treats governance as infrastructure: enforced at runtime, versioned by contract, and auditable by design.
+      </p>
+
+      <div class="footer">
+        <div>
+          <a href="/#contract">→ View the contract surface</a>
+          <span style="opacity:.55;">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+          <a href="/blog/index.html">← Back to Notes</a>
+        </div>
+        <div>
+          Insight Guard · Contract-first AI Governance
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
