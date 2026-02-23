@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Why AI Governance Needs Deterministic Decisions | Insight Guard</title>
+<meta name="description" content="AI systems can be non-deterministic. Governance cannot. Without deterministic decisions, AI governance is unenforceable and unauditable." />
+<link rel="canonical" href="https://insightguard.tech/blog/2026-02-why-ai-governance-needs-deterministic-decisions.html" />
+
+<style>
+:root{
+  --text:#e9eefc;
+  --muted:#98a2c3;
+  --line:rgba(255,255,255,0.08);
+  --accent:#7f8cff;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:linear-gradient(180deg,#070716 0%,#04040d 100%);
+  color:var(--text);
+  line-height:1.7;
+}
+.wrap{
+  max-width:760px;
+  margin:0 auto;
+  padding:48px 20px 80px;
+}
+.crumb{
+  font-size:14px;
+  color:var(--muted);
+  margin-bottom:24px;
+}
+.crumb a{
+  color:var(--muted);
+  text-decoration:none;
+}
+h1{
+  font-size:34px;
+  margin:0 0 10px 0;
+}
+.meta{
+  font-size:14px;
+  color:var(--muted);
+  margin-bottom:24px;
+}
+.lead{
+  font-size:18px;
+  color:#cfd6ff;
+  margin-bottom:28px;
+}
+hr{
+  border:none;
+  border-top:1px solid var(--line);
+  margin:32px 0;
+}
+h2{
+  font-size:22px;
+  margin-top:40px;
+}
+.callout{
+  border:1px solid var(--line);
+  background:rgba(127,140,255,0.05);
+  padding:16px;
+  border-radius:12px;
+  margin:24px 0;
+}
+code{
+  background:rgba(255,255,255,0.05);
+  padding:2px 6px;
+  border-radius:6px;
+}
+a{
+  color:var(--accent);
+  text-decoration:none;
+}
+.footer{
+  margin-top:60px;
+  font-size:14px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+<div class="crumb"><a href="/">Home</a> / <a href="/blog/index.html">Notes</a></div>
+
+<h1>Why AI Governance Needs Deterministic Decisions</h1>
+
+<div class="meta">Feb 23, 2026 · 5 min read</div>
+
+<p class="lead">
+AI systems can be non-deterministic. Governance cannot.
+</p>
+
+<hr/>
+
+<h2>AI Is Probabilistic by Nature</h2>
+
+<p>
+Large language models generate outputs based on probability distributions.
+The same input can produce different responses.
+Temperature changes outcomes.
+Sampling changes behavior.
+Model updates shift internal representations.
+</p>
+
+<p>
+This variability is expected.
+It is part of how generative AI works.
+</p>
+
+<p>
+But governance cannot operate on probability.
+</p>
+
+<hr/>
+
+<h2>Governance Requires Predictable Outcomes</h2>
+
+<p>
+If the same scenario sometimes results in <code>allow</code> and sometimes in <code>block</code>,
+you do not have governance.
+You have uncertainty layered on top of uncertainty.
+</p>
+
+<p>
+Governance must answer:
+</p>
+
+<ul>
+<li>What decision was made?</li>
+<li>Why was it made?</li>
+<li>Will the same scenario produce the same decision tomorrow?</li>
+</ul>
+
+<p>
+If the answer to the third question is “not necessarily,”
+you cannot audit the system.
+</p>
+
+<hr/>
+
+<h2>Determinism Is an Infrastructure Requirement</h2>
+
+<p>
+Deterministic decisions do not mean deterministic AI outputs.
+They mean deterministic governance outcomes.
+</p>
+
+<p>
+For example:
+</p>
+
+<div class="callout">
+Given the same structured evidence and the same policy version,
+the governance layer must always return the same result.
+</div>
+
+<p>
+That result might be:
+</p>
+
+<ul>
+<li><code>allow</code></li>
+<li><code>block</code></li>
+<li><code>cooldown</code></li>
+<li><code>no_op</code></li>
+</ul>
+
+<p>
+But it cannot vary randomly.
+</p>
+
+<hr/>
+
+<h2>Without Determinism, Audit Is Impossible</h2>
+
+<p>
+Audit requires replay.
+Replay requires stable behavior.
+Stable behavior requires determinism.
+</p>
+
+<p>
+If your governance layer changes its decision without version change,
+you cannot prove what happened.
+You cannot explain discrepancies.
+You cannot defend incidents.
+</p>
+
+<p>
+Policy statements cannot fix this.
+Only deterministic runtime control can.
+</p>
+
+<hr/>
+
+<h2>Determinism Is the Boundary Between AI and Liability</h2>
+
+<p>
+When an AI system causes harm,
+liability depends on traceability.
+</p>
+
+<p>
+Traceability depends on:
+</p>
+
+<ul>
+<li>Frozen behavior versions</li>
+<li>Stable decision logic</li>
+<li>Immutable audit records</li>
+</ul>
+
+<p>
+This is not a UX problem.
+This is not a documentation problem.
+This is a runtime decision infrastructure problem.
+</p>
+
+<hr/>
+
+<h2>Governance Must Be More Stable Than the Model</h2>
+
+<p>
+Models evolve.
+Prompts evolve.
+Capabilities expand.
+</p>
+
+<p>
+Governance cannot drift at the same speed.
+</p>
+
+<p>
+The governance layer must be:
+</p>
+
+<ul>
+<li>Versioned</li>
+<li>Deterministic</li>
+<li>Auditable</li>
+<li>Kill-switch ready</li>
+</ul>
+
+<div class="callout">
+AI can be probabilistic.
+Governance must be deterministic.
+</div>
+
+<hr/>
+
+<p>
+If your governance decisions are not deterministic,
+you do not have governance.
+You have policy theater.
+</p>
+
+<p>
+Governance begins where probability ends.
+</p>
+
+<div class="footer">
+Insight Guard · Runtime Governance Infrastructure
+</div>
+
+</div>
+</body>
+</html>
