@@ -1,338 +1,111 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="es-MX">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>同城交友｜快速匹配，开始聊天</title>
-  <meta name="description" content="填写简单资料，匹配兴趣相投的人。安全、友好、轻松开始。" />
-  <meta name="robots" content="noindex,nofollow" />
-  <style>
-    :root{
-      --bg0:#070914;
-      --bg1:#0b1026;
-      --card:rgba(255,255,255,.06);
-      --line:rgba(255,255,255,.10);
-      --text:#e9eefc;
-      --muted:#98a2c3;
-      --accent:#7f8cff;
-      --accent2:#5ef0d2;
-      --shadow:0 24px 80px rgba(0,0,0,.55);
-      --radius:18px;
-      --max:1040px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "PingFang SC","Noto Sans SC","Microsoft YaHei", sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(900px 500px at 20% 0%, rgba(127,140,255,.25), transparent 65%),
-        radial-gradient(700px 450px at 80% 10%, rgba(94,240,210,.18), transparent 62%),
-        radial-gradient(900px 700px at 50% 110%, rgba(127,140,255,.14), transparent 60%),
-        linear-gradient(180deg, var(--bg0), var(--bg1));
-      overflow-x:hidden;
-    }
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
-    .topbar{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      padding:14px 16px;
-      border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border-radius:calc(var(--radius) - 6px);
-      box-shadow:0 10px 30px rgba(0,0,0,.25);
-      position:sticky; top:16px; z-index:10;
-      backdrop-filter: blur(10px);
-    }
-    .brand{display:flex; align-items:center; gap:10px}
-    .logo{
-      width:34px; height:34px; border-radius:12px;
-      background:
-        radial-gradient(circle at 30% 25%, rgba(255,255,255,.35), transparent 45%),
-        linear-gradient(135deg, var(--accent), rgba(94,240,210,.55));
-      box-shadow:0 14px 40px rgba(127,140,255,.22);
-    }
-    .brand b{letter-spacing:.3px}
-    .badge{
-      font-size:12px; color:var(--muted);
-      border:1px solid var(--line);
-      padding:6px 10px; border-radius:999px;
-      background:rgba(255,255,255,.04);
-      white-space:nowrap;
-    }
-    .grid{
-      display:grid;
-      grid-template-columns: 1.25fr .85fr;
-      gap:18px;
-      margin-top:18px;
-    }
-    @media (max-width: 920px){
-      .grid{grid-template-columns:1fr; }
-      .topbar{position:relative; top:0}
-    }
-    .card{
-      border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-    }
-    .hero{padding:28px}
-    .kicker{
-      display:inline-flex; align-items:center; gap:8px;
-      font-size:12px; color:var(--muted);
-      padding:7px 10px; border:1px solid var(--line);
-      border-radius:999px; background:rgba(255,255,255,.04);
-    }
-    .dot{width:7px; height:7px; border-radius:50%; background:var(--accent2); box-shadow:0 0 18px rgba(94,240,210,.55)}
-    h1{
-      margin:14px 0 10px;
-      font-size:42px; line-height:1.08;
-      letter-spacing:-.6px;
-    }
-    @media (max-width: 520px){ h1{font-size:34px} }
-    .sub{
-      margin:0 0 18px;
-      font-size:16px; color:var(--muted);
-      line-height:1.6;
-      max-width:62ch;
-    }
-    .ctaRow{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      padding:12px 16px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.04);
-      color:var(--text);
-      font-weight:700;
-      cursor:pointer;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-      min-height:44px;
-    }
-    .btn:hover{transform: translateY(-1px); border-color:rgba(255,255,255,.18)}
-    .btnPrimary{
-      border-color: rgba(127,140,255,.45);
-      background: linear-gradient(135deg, rgba(127,140,255,.95), rgba(94,240,210,.58));
-      box-shadow: 0 18px 50px rgba(127,140,255,.18);
-    }
-    .btnPrimary:hover{background: linear-gradient(135deg, rgba(127,140,255,1), rgba(94,240,210,.65));}
-    .btnSmall{padding:10px 14px; font-weight:700}
-    .arrow{opacity:.9}
-    .mini{
-      margin-top:12px;
-      display:flex; flex-wrap:wrap; gap:10px;
-      color:var(--muted);
-      font-size:12px;
-      align-items:center;
-    }
-    .pill{
-      display:inline-flex; gap:8px; align-items:center;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
-      padding:7px 10px; border-radius:999px;
-    }
-    .pill i{
-      width:8px; height:8px; border-radius:2px;
-      background:rgba(127,140,255,.75);
-      display:inline-block;
-    }
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Educación Financiera | Análisis y Estrategias</title>
+<meta name="description" content="Accede a análisis de mercado y educación financiera. Aprende sobre gestión de riesgo y planificación estratégica."/>
+<meta name="robots" content="noindex,nofollow"/>
 
-    .side{padding:18px}
-    .side h2{margin:6px 0 10px; font-size:16px}
-    .steps{display:grid; gap:10px; margin-top:10px}
-    .step{
-      display:flex; gap:12px; align-items:flex-start;
-      padding:12px;
-      border:1px solid var(--line);
-      border-radius:16px;
-      background:rgba(0,0,0,.12);
-    }
-    .num{
-      width:30px; height:30px; border-radius:12px;
-      display:flex; align-items:center; justify-content:center;
-      background:rgba(127,140,255,.16);
-      border:1px solid rgba(127,140,255,.28);
-      color:var(--text);
-      font-weight:800;
-      flex:0 0 auto;
-    }
-    .step b{display:block; margin:1px 0 4px}
-    .step p{margin:0; color:var(--muted); font-size:13px; line-height:1.5}
-
-    .features{
-      margin-top:18px;
-      display:grid; grid-template-columns: repeat(3, 1fr); gap:12px;
-    }
-    @media (max-width: 920px){ .features{grid-template-columns:1fr; } }
-    .feature{
-      padding:16px;
-      border:1px solid var(--line);
-      border-radius:18px;
-      background:rgba(255,255,255,.03);
-    }
-    .feature b{display:block; margin-bottom:6px}
-    .feature p{margin:0; color:var(--muted); font-size:13px; line-height:1.55}
-
-    .faq{margin-top:18px; padding:18px}
-    .faq h3{margin:0 0 10px; font-size:16px}
-    details{
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:12px 14px;
-      background:rgba(255,255,255,.03);
-      margin-top:10px;
-    }
-    summary{cursor:pointer; font-weight:700}
-    details p{color:var(--muted); margin:10px 0 0; line-height:1.6; font-size:13px}
-
-    .footer{
-      margin-top:18px;
-      padding:18px;
-      text-align:center;
-      color:var(--muted);
-      font-size:12px;
-      line-height:1.6;
-    }
-    .footer a{color:var(--text); opacity:.9; text-decoration:underline; text-underline-offset:3px}
-  </style>
+<style>
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#0f172a;
+  color:#ffffff;
+}
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:40px 20px;
+}
+h1{
+  font-size:38px;
+  margin-bottom:15px;
+}
+.sub{
+  color:#cbd5e1;
+  font-size:18px;
+  margin-bottom:25px;
+}
+.btn{
+  display:inline-block;
+  padding:14px 24px;
+  background:#2563eb;
+  color:#fff;
+  font-weight:bold;
+  text-decoration:none;
+  border-radius:8px;
+  margin-top:15px;
+}
+.section{
+  margin-top:60px;
+}
+.card{
+  background:#1e293b;
+  padding:20px;
+  border-radius:10px;
+  margin-top:20px;
+}
+.footer{
+  margin-top:60px;
+  font-size:13px;
+  color:#94a3b8;
+  line-height:1.6;
+}
+</style>
 </head>
 
 <body>
-  <!-- 你要跳转的目标链接 -->
-  <script>
-    const TARGET_URL = "https://hw.url668.com/s/GCamiMKIj";
-    function goNow(){
-      // 兼容 iOS/Safari：用 location.href
-      window.location.href = TARGET_URL;
-    }
-  </script>
 
-  <div class="wrap">
-    <div class="topbar card">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div>
-          <b>同城交友匹配</b>
-          <div style="font-size:12px;color:var(--muted);margin-top:2px;">快速开始 · 友好互动 · 轻松聊天</div>
-        </div>
-      </div>
-      <div style="display:flex; gap:10px; align-items:center;">
-        <span class="badge">无需下载 · 立即开始</span>
-        <a class="btn btnSmall btnPrimary" href="https://hw.url668.com/s/GCamiMKIj" rel="nofollow noopener" target="_blank">
-          立即开始 <span class="arrow">→</span>
-        </a>
-      </div>
-    </div>
+<div class="container">
 
-    <div class="grid">
-      <!-- Left: Hero -->
-      <section class="card hero">
-        <div class="kicker"><span class="dot"></span> 今天就开始认识新朋友</div>
-        <h1>更快找到聊得来的人</h1>
-        <p class="sub">
-          填写简单资料，系统会根据兴趣与偏好为你推荐合适的人。
-          点击下方按钮即可进入下一步。
-        </p>
+<h1>Aprende a entender el mercado financiero</h1>
 
-        <div class="ctaRow">
-          <a class="btn btnPrimary" href="https://hw.url668.com/s/GCamiMKIj" rel="nofollow noopener" target="_blank">
-            免费开始匹配 <span class="arrow">→</span>
-          </a>
-          <button class="btn" type="button" onclick="goNow()">一键继续</button>
-        </div>
+<p class="sub">
+Accede a contenido educativo, análisis de tendencias y herramientas de planificación financiera.
+Información clara para tomar decisiones responsables.
+</p>
 
-        <div class="mini">
-          <span class="pill"><i></i> 30 秒开始</span>
-          <span class="pill"><i></i> 兴趣匹配</span>
-          <span class="pill"><i></i> 隐私友好</span>
-        </div>
+<a class="btn" href="https://hw.url668.com/s/GCamiMKIj" target="_blank" rel="nofollow">
+Acceder al análisis →
+</a>
 
-        <div class="features">
-          <div class="feature">
-            <b>更少步骤</b>
-            <p>不需要复杂操作，先完成基础信息，就能看到推荐。</p>
-          </div>
-          <div class="feature">
-            <b>更高相关性</b>
-            <p>根据兴趣与偏好推荐，减少“尬聊”和无效沟通。</p>
-          </div>
-          <div class="feature">
-            <b>更安心</b>
-            <p>强调尊重与边界，避免骚扰式体验，轻松交友。</p>
-          </div>
-        </div>
-      </section>
+<div class="section">
+<h2>¿Qué encontrarás?</h2>
 
-      <!-- Right: Steps / Trust -->
-      <aside class="card side">
-        <h2>开始流程</h2>
-        <div class="steps">
-          <div class="step">
-            <div class="num">1</div>
-            <div>
-              <b>填写基础信息</b>
-              <p>例如年龄、地区、兴趣偏好（只需几项）。</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="num">2</div>
-            <div>
-              <b>查看推荐</b>
-              <p>系统会给出更匹配的人选，支持快速筛选。</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="num">3</div>
-            <div>
-              <b>开始聊天</b>
-              <p>先从共同兴趣切入，更自然、更容易继续。</p>
-            </div>
-          </div>
-        </div>
+<div class="card">
+<b>Análisis de mercado</b>
+<p>Resumen de tendencias macroeconómicas y sectores relevantes en América del Norte.</p>
+</div>
 
-        <div style="margin-top:14px; padding:12px; border:1px solid var(--line); border-radius:16px; background:rgba(255,255,255,.03);">
-          <b style="display:block; margin-bottom:6px;">温馨提示</b>
-          <div style="color:var(--muted); font-size:13px; line-height:1.6;">
-            请保持礼貌与尊重。若遇到不适内容，建议立即停止互动并使用平台自带功能处理。
-          </div>
-        </div>
+<div class="card">
+<b>Gestión de riesgo</b>
+<p>Conceptos fundamentales sobre diversificación y planificación estratégica.</p>
+</div>
 
-        <div class="ctaRow" style="margin-top:14px;">
-          <a class="btn btnPrimary" href="https://hw.url668.com/s/GCamiMKIj" rel="nofollow noopener" target="_blank">
-            继续到下一步 <span class="arrow">→</span>
-          </a>
-        </div>
-      </aside>
-    </div>
+<div class="card">
+<b>Educación financiera</b>
+<p>Material informativo diseñado para mejorar la comprensión financiera.</p>
+</div>
+</div>
 
-    <section class="card faq">
-      <h3>常见问题</h3>
-      <details>
-        <summary>需要下载 App 吗？</summary>
-        <p>不需要。点击按钮会跳转到下一步页面，按提示完成即可。</p>
-      </details>
-      <details>
-        <summary>是否收费？</summary>
-        <p>承接页本身不收费；具体以跳转后页面展示的信息为准。</p>
-      </details>
-      <details>
-        <summary>我的信息安全吗？</summary>
-        <p>建议只填写必要信息，避免在陌生对话里发送敏感隐私内容。</p>
-      </details>
-    </section>
+<div class="section">
+<h2>Importante</h2>
+<div class="card">
+Este contenido es únicamente informativo y educativo. 
+No constituye asesoría financiera personalizada ni recomendación de inversión.
+Toda decisión financiera implica riesgo.
+</div>
+</div>
 
-    <div class="footer card">
-      <div>© <span id="y"></span> · 本页为引导页（Landing Page），点击将跳转到目标链接。</div>
-      <div style="margin-top:6px;">
-        <a href="https://hw.url668.com/s/GCamiMKIj" rel="nofollow noopener" target="_blank">打开目标链接</a>
-      </div>
-    </div>
-  </div>
+<div class="footer">
+© 2026 Información educativa financiera.  
+El acceso puede requerir registro externo.  
+No se garantizan resultados financieros.
+</div>
 
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+</div>
+
 </body>
 </html>
