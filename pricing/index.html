@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pricing — Insight Guard</title>
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+
+    <meta
+      name="description"
+      content="Insight Guard pricing for contract-first AI governance at runtime. Transparent plans for teams evaluating deterministic and auditable AI control."
+    />
+    <meta name="robots" content="index,follow" />
+
+    <style>
+      :root {
+        --bg: #0b1020;
+        --card: rgba(18, 26, 51, 0.8);
+        --text: #e8ecff;
+        --muted: #b8c0ff;
+        --line: rgba(132, 145, 255, 0.18);
+        --accent: #7c4dff;
+        --accent2: #4de3ff;
+        --shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+        color: var(--text);
+        background:
+          radial-gradient(1200px 700px at 18% 12%, rgba(124, 77, 255, 0.25), transparent 60%),
+          radial-gradient(900px 600px at 82% 20%, rgba(77, 227, 255, 0.16), transparent 60%),
+          radial-gradient(900px 700px at 55% 92%, rgba(124, 77, 255, 0.18), transparent 60%),
+          var(--bg);
+      }
+      a { color: inherit; }
+      .wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 56px 22px 72px;
+      }
+      .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 36px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .logo {
+        width: 40px;
+        height: 40px;
+        border-radius: 14px;
+        background: url("/logo.png") center / contain no-repeat;
+        box-shadow: 0 10px 30px rgba(124, 77, 255, 0.25);
+      }
+      .brand b {
+        letter-spacing: 0.3px;
+        font-size: 16px;
+      }
+      .nav {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      .nav a {
+        text-decoration: none;
+        padding: 8px 12px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--muted);
+        font-size: 13px;
+        background: rgba(18, 26, 51, 0.35);
+        backdrop-filter: blur(6px);
+      }
+      .hero,
+      .section {
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 24px 22px;
+        background: linear-gradient(180deg, rgba(18, 26, 51, 0.92), rgba(18, 26, 51, 0.62));
+        box-shadow: var(--shadow);
+      }
+      .section {
+        margin-top: 22px;
+        background: rgba(18, 26, 51, 0.55);
+      }
+      h1 {
+        margin: 0 0 10px;
+        font-size: 40px;
+        line-height: 1.08;
+        letter-spacing: -0.6px;
+      }
+      h2 {
+        margin: 0 0 10px;
+        font-size: 20px;
+        letter-spacing: -0.2px;
+      }
+      h3 {
+        margin: 0 0 8px;
+        font-size: 16px;
+      }
+      .sub {
+        margin: 0;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.6;
+        max-width: 860px;
+      }
+      .pillrow {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 16px;
+      }
+      .pill {
+        font-size: 12px;
+        color: var(--muted);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 7px 10px;
+        background: rgba(11, 16, 32, 0.35);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin-top: 18px;
+      }
+      .card {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 18px 16px;
+        background: var(--card);
+        position: relative;
+      }
+      .card.featured {
+        outline: 1px solid rgba(124, 77, 255, 0.45);
+        box-shadow: 0 16px 40px rgba(124, 77, 255, 0.12);
+      }
+      .badge {
+        display: inline-block;
+        margin-bottom: 10px;
+        font-size: 11px;
+        color: #fff;
+        border-radius: 999px;
+        padding: 6px 9px;
+        background: linear-gradient(135deg, rgba(124, 77, 255, 0.95), rgba(77, 227, 255, 0.55));
+      }
+      .price {
+        font-size: 34px;
+        font-weight: 800;
+        letter-spacing: -0.6px;
+        margin: 8px 0 4px;
+      }
+      .muted {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.55;
+      }
+      ul {
+        margin: 12px 0 0;
+        padding-left: 18px;
+        color: var(--muted);
+      }
+      li {
+        margin: 8px 0;
+        line-height: 1.55;
+        font-size: 13px;
+      }
+      .cta {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 16px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 12px 14px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        text-decoration: none;
+        background: rgba(18, 26, 51, 0.35);
+        color: var(--text);
+        font-weight: 650;
+        font-size: 14px;
+      }
+      .btn.primary {
+        border-color: rgba(124, 77, 255, 0.35);
+        background: linear-gradient(135deg, rgba(124, 77, 255, 0.95), rgba(77, 227, 255, 0.22));
+        box-shadow: 0 16px 40px rgba(124, 77, 255, 0.18);
+      }
+      .two {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .foot {
+        margin-top: 22px;
+        color: rgba(232, 236, 255, 0.75);
+        font-size: 12.5px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .mini {
+        color: rgba(232, 236, 255, 0.55);
+        font-size: 12px;
+      }
+      @media (max-width: 920px) {
+        .grid, .two { grid-template-columns: 1fr; }
+        h1 { font-size: 32px; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <div class="top">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <b>Insight Guard</b><br />
+            <span class="mini">Contract-first AI governance at runtime</span>
+          </div>
+        </div>
+        <div class="nav">
+          <a href="/">Home</a>
+          <a href="/pricing/">Pricing</a>
+          <a href="/terms/">Terms</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/blog/">Notes</a>
+        </div>
+      </div>
+
+      <div class="hero">
+        <h1>Simple pricing for auditable AI runtime governance.</h1>
+        <p class="sub">
+          Insight Guard is sold as a software service for teams that need deterministic
+          decisions, stable reason codes, and contract-ready governance semantics at runtime.
+        </p>
+
+        <div class="pillrow">
+          <div class="pill">Software service</div>
+          <div class="pill">Monthly billing</div>
+          <div class="pill">Cancel anytime</div>
+          <div class="pill">B2B evaluation friendly</div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Starter</h3>
+          <div class="price">$29<span class="mini">/month</span></div>
+          <p class="muted">For early evaluation and low-volume runtime governance use cases.</p>
+          <ul>
+            <li>Core guard decisions: allow / block / cooldown / no_op</li>
+            <li>Stable reason codes and audit IDs</li>
+            <li>Email support</li>
+            <li>Single environment</li>
+          </ul>
+          <div class="cta">
+            <a class="btn" href="mailto:info@insightguard.tech">Request access</a>
+          </div>
+        </div>
+
+        <div class="card featured">
+          <span class="badge">Most practical</span>
+          <h3>Growth</h3>
+          <div class="price">$99<span class="mini">/month</span></div>
+          <p class="muted">For teams integrating guard decisions into production-facing workflows.</p>
+          <ul>
+            <li>Everything in Starter</li>
+            <li>Tenant-aware policy modes</li>
+            <li>Shadow-only and enforce modes</li>
+            <li>Priority support</li>
+            <li>Usage review assistance</li>
+          </ul>
+          <div class="cta">
+            <a class="btn primary" href="mailto:info@insightguard.tech">Talk to us</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Enterprise</h3>
+          <div class="price">Custom</div>
+          <p class="muted">For regulated or higher-scale environments needing contract and rollout controls.</p>
+          <ul>
+            <li>Custom limits and deployment support</li>
+            <li>Reference spec bundle</li>
+            <li>Operational runbook alignment</li>
+            <li>Dedicated onboarding</li>
+          </ul>
+          <div class="cta">
+            <a class="btn" href="mailto:info@insightguard.tech">Contact sales</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Billing policy</h2>
+        <div class="two">
+          <div class="card">
+            <h3>Subscriptions</h3>
+            <ul>
+              <li>Plans are billed monthly unless otherwise agreed in writing.</li>
+              <li>You may cancel before the next billing cycle to avoid future charges.</li>
+              <li>Plan changes may take effect immediately or on the next renewal date.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Refunds</h3>
+            <ul>
+              <li>Unless otherwise required by law, subscription fees already charged are generally non-refundable.</li>
+              <li>If we issue a refund at our discretion, it will be returned to the original payment method.</li>
+              <li>Custom enterprise agreements may include separate commercial terms.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>What customers are paying for</h2>
+        <ul>
+          <li>Access to Insight Guard as a hosted software service.</li>
+          <li>Runtime governance logic and contract-style decision responses.</li>
+          <li>Associated support, onboarding materials, and product documentation where applicable.</li>
+          <li>No physical goods are sold through this website.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>Contact</h2>
+        <p class="sub" style="margin-top: 8px;">
+          For pricing questions, invoicing, or plan access, contact
+          <b>info@insightguard.tech</b>.
+        </p>
+      </div>
+
+      <div class="foot">
+        <div>© <span id="y"></span> Insight Guard. All rights reserved.</div>
+        <div class="mini">Pricing information may change with notice.</div>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
