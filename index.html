@@ -4,14 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Insight Guard — Contract-first AI Governance</title>
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
-    <link rel="apple-touch-icon" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
 
     <meta
       name="description"
       content="Contract-first AI governance at runtime. Deterministic decisions, auditable outputs, tenant isolation, and kill-switch ready — without storing raw user data by default."
     />
     <meta name="robots" content="index,follow" />
+
     <style>
       :root {
         --bg: #0b1020;
@@ -23,9 +24,15 @@
         --accent2: #4de3ff;
         --shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
       }
+
       * {
         box-sizing: border-box;
       }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         margin: 0;
         font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
@@ -48,14 +55,17 @@
           ),
           var(--bg);
       }
+
       a {
         color: inherit;
       }
+
       .wrap {
         max-width: 1040px;
         margin: 0 auto;
         padding: 56px 22px 72px;
       }
+
       .top {
         display: flex;
         align-items: center;
@@ -63,18 +73,18 @@
         gap: 16px;
         margin-bottom: 36px;
       }
+
       .brand {
         display: flex;
         align-items: center;
         gap: 12px;
       }
 
-      /* ✅ LOGO: switched to your uploaded logo.png (repo root) */
       .logo {
         width: 40px;
         height: 40px;
         border-radius: 14px;
-        background: url("logo.png") center / contain no-repeat;
+        background: url("/logo.png") center / contain no-repeat;
         box-shadow: 0 10px 30px rgba(124, 77, 255, 0.25);
       }
 
@@ -82,11 +92,13 @@
         letter-spacing: 0.3px;
         font-size: 16px;
       }
+
       .nav {
         display: flex;
         gap: 14px;
         flex-wrap: wrap;
       }
+
       .nav a {
         text-decoration: none;
         padding: 8px 12px;
@@ -97,6 +109,7 @@
         background: rgba(18, 26, 51, 0.35);
         backdrop-filter: blur(6px);
       }
+
       .hero {
         border: 1px solid var(--line);
         border-radius: 22px;
@@ -108,12 +121,14 @@
         );
         box-shadow: var(--shadow);
       }
+
       h1 {
         margin: 0 0 10px;
         font-size: 42px;
         line-height: 1.08;
         letter-spacing: -0.6px;
       }
+
       .sub {
         margin: 0;
         color: var(--muted);
@@ -121,12 +136,14 @@
         line-height: 1.6;
         max-width: 860px;
       }
+
       .pillrow {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
         margin-top: 16px;
       }
+
       .pill {
         font-size: 12px;
         color: var(--muted);
@@ -135,12 +152,14 @@
         padding: 7px 10px;
         background: rgba(11, 16, 32, 0.35);
       }
+
       .cta {
         display: flex;
         gap: 12px;
         flex-wrap: wrap;
         margin-top: 18px;
       }
+
       .btn {
         display: inline-flex;
         align-items: center;
@@ -156,6 +175,7 @@
         font-weight: 650;
         font-size: 14px;
       }
+
       .btn.primary {
         border-color: rgba(124, 77, 255, 0.35);
         background: linear-gradient(
@@ -165,28 +185,33 @@
         );
         box-shadow: 0 16px 40px rgba(124, 77, 255, 0.18);
       }
+
       .grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 14px;
         margin-top: 18px;
       }
+
       .card {
         border: 1px solid var(--line);
         border-radius: 18px;
         padding: 16px 16px;
         background: var(--card);
       }
+
       .card h3 {
         margin: 0 0 8px;
         font-size: 15px;
       }
+
       .card p {
         margin: 0;
         color: var(--muted);
         font-size: 13px;
         line-height: 1.55;
       }
+
       .section {
         margin-top: 22px;
         border: 1px solid var(--line);
@@ -194,26 +219,37 @@
         padding: 22px;
         background: rgba(18, 26, 51, 0.55);
       }
+
       .section h2 {
         margin: 0 0 10px;
         font-size: 20px;
         letter-spacing: -0.2px;
       }
+
       .two {
         display: grid;
         grid-template-columns: 1.2fr 0.8fr;
         gap: 14px;
       }
+
+      .three {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+
       ul {
         margin: 10px 0 0;
         padding-left: 18px;
         color: var(--muted);
       }
+
       li {
         margin: 8px 0;
         line-height: 1.55;
         font-size: 13px;
       }
+
       pre {
         margin: 0;
         padding: 14px;
@@ -225,10 +261,32 @@
         line-height: 1.55;
         font-size: 12.5px;
       }
+
       code {
         font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
           monospace;
       }
+
+      .contact-list {
+        margin-top: 10px;
+        display: grid;
+        gap: 10px;
+      }
+
+      .contact-item {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 12px 14px;
+        background: rgba(18, 26, 51, 0.35);
+      }
+
+      .label {
+        display: block;
+        font-size: 12px;
+        color: var(--muted);
+        margin-bottom: 4px;
+      }
+
       .foot {
         margin-top: 22px;
         color: rgba(232, 236, 255, 0.75);
@@ -239,22 +297,32 @@
         justify-content: space-between;
         align-items: center;
       }
+
       .mini {
         color: rgba(232, 236, 255, 0.55);
         font-size: 12px;
       }
+
+      .mini a {
+        text-decoration: none;
+      }
+
       .hr {
         height: 1px;
         background: var(--line);
         margin: 18px 0;
       }
+
       @media (max-width: 920px) {
-        .grid {
+        .grid,
+        .three {
           grid-template-columns: 1fr;
         }
+
         .two {
           grid-template-columns: 1fr;
         }
+
         h1 {
           font-size: 34px;
         }
@@ -272,10 +340,14 @@
             <span class="mini">Contract-first AI governance at runtime</span>
           </div>
         </div>
+
         <div class="nav">
           <a href="#why">Why</a>
           <a href="#how">How</a>
           <a href="#contract">API Contract</a>
+          <a href="/pricing/">Pricing</a>
+          <a href="/terms/">Terms</a>
+          <a href="/privacy/">Privacy</a>
           <a href="/blog/">Notes</a>
           <a href="#faq">FAQ</a>
           <a href="#contact">Contact</a>
@@ -304,6 +376,7 @@
         <div class="cta">
           <a class="btn primary" href="#contact">Request access / reference pack</a>
           <a class="btn" href="#contract">View contract snippet</a>
+          <a class="btn" href="/pricing/">View pricing</a>
           <a class="btn" href="/blog/">Read notes</a>
         </div>
 
@@ -315,6 +388,7 @@
               behavior is versioned, reasons are enumerable, and audits are replayable.
             </p>
           </div>
+
           <div class="card">
             <h3>What it controls</h3>
             <p>
@@ -322,6 +396,7 @@
               and any decision that must be explainable to security, legal, or procurement.
             </p>
           </div>
+
           <div class="card">
             <h3>What it refuses to be</h3>
             <p>
@@ -348,6 +423,7 @@
               <li><b>Kill switch</b>: tenant-level off or shadow-only (log without enforcement).</li>
             </ul>
           </div>
+
           <div>
             <pre><code>{
   "decision": "allow | block | cooldown | no_op",
@@ -385,6 +461,7 @@ Authorization: Bearer &lt;API_KEY&gt;
     "shadow_only": false
   }
 }</code></pre>
+
           <pre><code>200 OK
 
 {
@@ -409,6 +486,7 @@ Authorization: Bearer &lt;API_KEY&gt;
               <li><b>Kill switch is a first-class state</b>: “off” is legitimate and auditable.</li>
             </ul>
           </div>
+
           <div>
             <h2>What we do not promise</h2>
             <ul>
@@ -421,6 +499,41 @@ Authorization: Bearer &lt;API_KEY&gt;
         </div>
       </div>
 
+      <div class="section">
+        <h2>Commercial overview</h2>
+        <div class="three">
+          <div class="card">
+            <h3>Software service</h3>
+            <p>
+              Insight Guard is offered as a hosted software service for teams evaluating
+              runtime governance controls and contract-style AI decisioning.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Transparent policies</h3>
+            <p>
+              Pricing, terms, and privacy information are publicly available to support
+              procurement review and platform verification workflows.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Support-ready</h3>
+            <p>
+              Customers can contact us for onboarding, access requests, commercial questions,
+              and reference material through the contact details below.
+            </p>
+          </div>
+        </div>
+
+        <div class="cta" style="margin-top: 16px;">
+          <a class="btn" href="/pricing/">Pricing</a>
+          <a class="btn" href="/terms/">Terms of Service</a>
+          <a class="btn" href="/privacy/">Privacy Policy</a>
+        </div>
+      </div>
+
       <div class="section" id="faq">
         <h2>FAQ</h2>
         <ul>
@@ -429,21 +542,52 @@ Authorization: Bearer &lt;API_KEY&gt;
           <li><b>Can this run “shadow-only”?</b> Yes. You can log decisions without enforcing them, then turn on enforcement per tenant.</li>
           <li><b>Is this “AI safety” marketing?</b> No. This is runtime governance with auditable outputs and contract semantics.</li>
           <li><b>Where can I read more?</b> Notes live at <a href="/blog/">/blog/</a>.</li>
+          <li><b>Do you offer subscriptions?</b> Yes. See <a href="/pricing/">/pricing/</a> for current commercial information.</li>
         </ul>
       </div>
 
       <div class="section" id="contact">
         <h2>Contact</h2>
         <p class="sub" style="margin-top: 8px">
-          If you want the reference pack, SDK examples, or a contract-ready spec bundle, reach out:
-          <b>info@insightguard.tech</b>
+          If you want the reference pack, SDK examples, pricing details, or a contract-ready spec bundle, reach out below.
         </p>
+
+        <div class="contact-list">
+          <div class="contact-item">
+            <span class="label">Product</span>
+            Insight Guard
+          </div>
+
+          <div class="contact-item">
+            <span class="label">Operator</span>
+            INNERSENSE LABS LLC
+          </div>
+
+          <div class="contact-item">
+            <span class="label">Support / Commercial Email</span>
+            <a href="mailto:info@insightguard.tech">info@insightguard.tech</a>
+          </div>
+
+          <div class="contact-item">
+            <span class="label">Website</span>
+            <a href="https://insightguard.tech">https://insightguard.tech</a>
+          </div>
+
+          <div class="contact-item">
+            <span class="label">Policies</span>
+            <a href="/pricing/">Pricing</a> ·
+            <a href="/terms/">Terms</a> ·
+            <a href="/privacy/">Privacy</a>
+          </div>
+        </div>
+
         <div class="pillrow" style="margin-top: 14px">
           <div class="pill">Reference Case (shadow)</div>
           <div class="pill">SDK v0 (Node / Python)</div>
           <div class="pill">Contract bundle</div>
           <div class="pill">Ops runbooks</div>
         </div>
+
         <div class="pillrow" style="margin-top: 10px">
           <a class="pill" href="/blog/" style="text-decoration: none">Read Notes →</a>
         </div>
@@ -451,7 +595,11 @@ Authorization: Bearer &lt;API_KEY&gt;
 
       <div class="foot">
         <div>© <span id="y"></span> Insight Guard. All rights reserved.</div>
-        <div class="mini">Contract-first • Deterministic • Auditable • Kill-switch ready</div>
+        <div class="mini">
+          <a href="/pricing/">Pricing</a> ·
+          <a href="/terms/">Terms</a> ·
+          <a href="/privacy/">Privacy</a>
+        </div>
       </div>
     </div>
 
