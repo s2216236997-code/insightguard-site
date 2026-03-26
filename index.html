@@ -1,17 +1,15 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Insight Guard — Contract-first AI Governance</title>
+    <title>Insight Guard｜AI培训、AI实施与AI治理</title>
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
 
     <meta
       name="description"
-      content="Contract-first AI governance at runtime. Deterministic decisions, auditable outputs, tenant isolation, and kill-switch ready — without storing raw user data by default.
-
-Now combined with AI training: structured enablement, hands-on implementation, and governance-ready workflows so teams can actually operate and scale AI safely.."
+      content="提供企业级AI培训、AI实施落地与AI治理服务，帮助团队从不会用AI，到真正把AI用于业务增长、效率提升与安全可控的运营体系。"
     />
     <meta name="robots" content="index,follow" />
 
@@ -37,8 +35,8 @@ Now combined with AI training: structured enablement, hands-on implementation, a
 
       body {
         margin: 0;
-        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
-          Arial;
+        font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial,
+          sans-serif;
         color: var(--text);
         background: radial-gradient(
             1200px 700px at 18% 12%,
@@ -63,7 +61,7 @@ Now combined with AI training: structured enablement, hands-on implementation, a
       }
 
       .wrap {
-        max-width: 1040px;
+        max-width: 1120px;
         margin: 0 auto;
         padding: 56px 22px 72px;
       }
@@ -74,6 +72,7 @@ Now combined with AI training: structured enablement, hands-on implementation, a
         justify-content: space-between;
         gap: 16px;
         margin-bottom: 36px;
+        flex-wrap: wrap;
       }
 
       .brand {
@@ -83,8 +82,8 @@ Now combined with AI training: structured enablement, hands-on implementation, a
       }
 
       .logo {
-        width: 40px;
-        height: 40px;
+        width: 42px;
+        height: 42px;
         border-radius: 14px;
         background: url("/logo.png") center / contain no-repeat;
         box-shadow: 0 10px 30px rgba(124, 77, 255, 0.25);
@@ -114,8 +113,8 @@ Now combined with AI training: structured enablement, hands-on implementation, a
 
       .hero {
         border: 1px solid var(--line);
-        border-radius: 22px;
-        padding: 26px 22px;
+        border-radius: 24px;
+        padding: 30px 24px;
         background: linear-gradient(
           180deg,
           rgba(18, 26, 51, 0.92),
@@ -125,25 +124,25 @@ Now combined with AI training: structured enablement, hands-on implementation, a
       }
 
       h1 {
-        margin: 0 0 10px;
-        font-size: 42px;
-        line-height: 1.08;
-        letter-spacing: -0.6px;
+        margin: 0 0 12px;
+        font-size: 44px;
+        line-height: 1.12;
+        letter-spacing: -0.8px;
       }
 
       .sub {
         margin: 0;
         color: var(--muted);
         font-size: 16px;
-        line-height: 1.6;
-        max-width: 860px;
+        line-height: 1.8;
+        max-width: 900px;
       }
 
       .pillrow {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-        margin-top: 16px;
+        margin-top: 18px;
       }
 
       .pill {
@@ -159,7 +158,7 @@ Now combined with AI training: structured enablement, hands-on implementation, a
         display: flex;
         gap: 12px;
         flex-wrap: wrap;
-        margin-top: 18px;
+        margin-top: 22px;
       }
 
       .btn {
@@ -167,7 +166,7 @@ Now combined with AI training: structured enablement, hands-on implementation, a
         align-items: center;
         justify-content: center;
         gap: 10px;
-        padding: 12px 14px;
+        padding: 12px 16px;
         border-radius: 14px;
         border: 1px solid var(--line);
         text-decoration: none;
@@ -192,26 +191,26 @@ Now combined with AI training: structured enablement, hands-on implementation, a
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 14px;
-        margin-top: 18px;
+        margin-top: 20px;
       }
 
       .card {
         border: 1px solid var(--line);
         border-radius: 18px;
-        padding: 16px 16px;
+        padding: 16px;
         background: var(--card);
       }
 
       .card h3 {
         margin: 0 0 8px;
-        font-size: 15px;
+        font-size: 16px;
       }
 
       .card p {
         margin: 0;
         color: var(--muted);
         font-size: 13px;
-        line-height: 1.55;
+        line-height: 1.7;
       }
 
       .section {
@@ -224,8 +223,15 @@ Now combined with AI training: structured enablement, hands-on implementation, a
 
       .section h2 {
         margin: 0 0 10px;
-        font-size: 20px;
+        font-size: 22px;
         letter-spacing: -0.2px;
+      }
+
+      .section p.desc {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.8;
+        font-size: 15px;
       }
 
       .two {
@@ -248,25 +254,8 @@ Now combined with AI training: structured enablement, hands-on implementation, a
 
       li {
         margin: 8px 0;
-        line-height: 1.55;
-        font-size: 13px;
-      }
-
-      pre {
-        margin: 0;
-        padding: 14px;
-        border-radius: 16px;
-        border: 1px solid var(--line);
-        background: rgba(10, 14, 28, 0.65);
-        overflow: auto;
-        color: #dbe3ff;
-        line-height: 1.55;
-        font-size: 12.5px;
-      }
-
-      code {
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-          monospace;
+        line-height: 1.7;
+        font-size: 14px;
       }
 
       .contact-list {
@@ -290,7 +279,7 @@ Now combined with AI training: structured enablement, hands-on implementation, a
       }
 
       .foot {
-        margin-top: 22px;
+        margin-top: 24px;
         color: rgba(232, 236, 255, 0.75);
         font-size: 12.5px;
         display: flex;
@@ -313,6 +302,11 @@ Now combined with AI training: structured enablement, hands-on implementation, a
         height: 1px;
         background: var(--line);
         margin: 18px 0;
+      }
+
+      .highlight {
+        color: #ffffff;
+        font-weight: 700;
       }
 
       @media (max-width: 920px) {
@@ -339,268 +333,265 @@ Now combined with AI training: structured enablement, hands-on implementation, a
           <div class="logo" aria-hidden="true"></div>
           <div>
             <b>Insight Guard</b><br />
-            <span class="mini">Contract-first AI governance at runtime</span>
+            <span class="mini">AI培训、AI实施与AI治理</span>
           </div>
         </div>
 
         <div class="nav">
-          <a href="#why">Why</a>
-          <a href="#how">How</a>
-          <a href="#contract">API Contract</a>
-          <a href="/pricing/">Pricing</a>
-          <a href="/terms/">Terms</a>
-          <a href="/privacy/">Privacy</a>
-          <a href="/blog/">Notes</a>
-          <a href="#faq">FAQ</a>
-          <a href="#contact">Contact</a>
+          <a href="#services">服务内容</a>
+          <a href="#why">为什么选择我们</a>
+          <a href="#process">合作方式</a>
+          <a href="#faq">常见问题</a>
+          <a href="#contact">联系我们</a>
         </div>
       </div>
 
       <div class="hero">
-        <h1>Contract-first AI governance at runtime.  combined with AI training: structured enablement, hands-on implementation, and governance-ready workflows so teams can actually operate and scale AI safely.</h1>
+        <h1>帮助企业把 AI 真正用起来：先培训，再落地，最后做到安全可控</h1>
         <p class="sub">
-          Insight Guard is a <b>governance kernel</b> you call at runtime to decide
-          whether to <b>allow</b>, <b>block</b>, <b>cooldown</b>, or <b>no-op</b>.
-          It is built for <b>contract compliance</b>: stable reason codes, fixed
-          behavior versions, tenant isolation, and kill-switch readiness — without
-          storing raw user text by default.
+          我们面向企业提供<span class="highlight">AI培训、AI实施落地、AI治理与控制</span>三大服务，
+          帮助团队从“不会用AI”，走到“能用AI提升效率、获取客户、优化业务流程”，
+          再进一步建立可审计、可控制、可扩展的AI运行机制。
         </p>
 
-        <div class="pillrow" aria-label="product-pillars">
-          <div class="pill">Docs = Contract</div>
-          <div class="pill">Deterministic behavior_version</div>
-          <div class="pill">Stable reason_code enum</div>
-          <div class="pill">Tenant isolation & minimal data</div>
-          <div class="pill">Fail-safe & graceful degradation</div>
-          <div class="pill">Kill switch (off / shadow-only)</div>
+        <div class="pillrow" aria-label="service-pillars">
+          <div class="pill">企业AI培训</div>
+          <div class="pill">业务流程AI化</div>
+          <div class="pill">营销与获客自动化</div>
+          <div class="pill">团队实操陪跑</div>
+          <div class="pill">AI使用安全控制</div>
+          <div class="pill">可扩展的AI运营体系</div>
         </div>
 
         <div class="cta">
-          <a class="btn primary" href="#contact">Request access / reference pack</a>
-          <a class="btn" href="#contract">View contract snippet</a>
-          <a class="btn" href="/pricing/">View pricing</a>
-          <a class="btn" href="/blog/">Read notes</a>
+          <a class="btn primary" href="#contact">咨询合作</a>
+          <a class="btn" href="#services">查看服务</a>
+          <a class="btn" href="#process">了解合作流程</a>
         </div>
 
         <div class="grid" id="why">
           <div class="card">
-            <h3>Why Insight Guard</h3>
+            <h3>不是只讲概念</h3>
             <p>
-              Most “safety layers” drift silently. Insight Guard treats governance as a contract:
-              behavior is versioned, reasons are enumerable, and audits are replayable.
+              我们不是泛泛而谈的AI课程，而是围绕企业真实业务场景，
+              帮团队把AI真正用于营销、销售、运营和流程优化。
             </p>
           </div>
 
           <div class="card">
-            <h3>What it controls</h3>
+            <h3>不是只卖工具</h3>
             <p>
-              High-risk generations, repetitive “insight” injections, compliance-sensitive outputs,
-              and any decision that must be explainable to security, legal, or procurement.
+              单纯买一个AI工具，往往解决不了落地问题。
+              我们更重视从培训、实施到治理的完整闭环。
             </p>
           </div>
 
           <div class="card">
-            <h3>What it refuses to be</h3>
+            <h3>不是只追热点</h3>
             <p>
-              Not a platform. Not a dashboard. Not “magic safety.” No hidden policy changes.
-              No consulting disguised as product.
+              我们帮助企业建立长期可用的AI能力，
+              让AI成为业务系统的一部分，而不是短期噱头。
             </p>
           </div>
         </div>
       </div>
 
-      <div class="section" id="how">
-        <h2>How it works</h2>
-        <div class="two">
-          <div>
-            <ul>
-              <li><b>Single endpoint</b>: your app calls Guard with context and optional hashes.</li>
-              <li><b>One of four outcomes</b>: allow / block / cooldown / no_op.</li>
-              <li>
-                <b>Audit UX for machines</b>: stable <code>reason_code</code>,
-                <code>audit_id</code>, and <code>behavior_version</code>.
-              </li>
-              <li><b>Fail-safe</b>: configurable fail-open / fail-closed for timeouts or errors.</li>
-              <li><b>Minimal data surface</b>: default is “no raw text storage”. Store hashes / metadata only.</li>
-              <li><b>Kill switch</b>: tenant-level off or shadow-only (log without enforcement).</li>
-            </ul>
+      <div class="section" id="services">
+        <h2>我们的服务内容</h2>
+        <p class="desc">
+          我们主要帮助企业完成三件事：教会团队使用AI、帮助企业把AI落地到业务中、确保AI在企业内可控可持续运行。
+        </p>
+
+        <div class="three" style="margin-top: 16px;">
+          <div class="card">
+            <h3>一、AI培训</h3>
+            <p>
+              面向管理层、运营团队、营销团队、销售团队开展实战型AI培训，
+              让团队快速掌握AI工具的使用逻辑、提示词思路、业务应用方法和协作方式。
+            </p>
           </div>
 
-          <div>
-            <pre><code>{
-  "decision": "allow | block | cooldown | no_op",
-  "reason_code": "STABLE_ENUM",
-  "audit_id": "aud_...",
-  "behavior_version": "v1.0.0",
-  "latency_ms": 12,
-  "policy_mode": "enforce | shadow | off"
-}</code></pre>
-          </div>
-        </div>
-      </div>
-
-      <div class="section" id="contract">
-        <h2>Contract snippet (minimal)</h2>
-        <div class="two">
-          <pre><code>POST /v1/guard
-Content-Type: application/json
-Authorization: Bearer &lt;API_KEY&gt;
-
-{
-  "tenant_id": "tnt_123",
-  "event": {
-    "type": "assistant_output",
-    "content_hash": "sha256:...",
-    "context": {
-      "channel": "prod",
-      "model": "vendor/your-model",
-      "route": "reply",
-      "user_tier": "free | paid"
-    }
-  },
-  "options": {
-    "fail_mode": "open | closed",
-    "shadow_only": false
-  }
-}</code></pre>
-
-          <pre><code>200 OK
-
-{
-  "decision": "cooldown",
-  "reason_code": "COOLDOWN_ACTIVE",
-  "audit_id": "aud_6f3c...a91",
-  "behavior_version": "guard.v1.contract",
-  "policy_mode": "enforce",
-  "expires_in_sec": 3600
-}</code></pre>
-        </div>
-
-        <div class="hr"></div>
-
-        <div class="two">
-          <div>
-            <h2>What we guarantee</h2>
-            <ul>
-              <li><b>Stable semantics</b>: old behavior versions remain valid; no silent drift.</li>
-              <li><b>Reason codes do not rename</b>: telemetry and audits remain comparable.</li>
-              <li><b>Tenant isolation</b>: no cross-tenant leakage by design.</li>
-              <li><b>Kill switch is a first-class state</b>: “off” is legitimate and auditable.</li>
-            </ul>
+          <div class="card">
+            <h3>二、AI实施落地</h3>
+            <p>
+              根据企业实际业务场景，协助搭建AI工作流、内容生成流程、
+              获客流程、客户沟通流程或内部提效流程，让AI真正产生业务价值。
+            </p>
           </div>
 
-          <div>
-            <h2>What we do not promise</h2>
-            <ul>
-              <li>No claim of “perfect safety” or “guaranteed compliance”.</li>
-              <li>No storage of raw end-user text by default.</li>
-              <li>No custom reason_code for a single customer (avoids consulting trap).</li>
-              <li>No dashboard-heavy surface area in v1.</li>
-            </ul>
+          <div class="card">
+            <h3>三、AI治理与控制</h3>
+            <p>
+              对企业AI使用建立规则、边界和控制机制，
+              包括输出审计、行为约束、风控策略、权限隔离与可追踪机制。
+            </p>
           </div>
         </div>
       </div>
 
       <div class="section">
-        <h2>Commercial overview</h2>
-        <div class="three">
-          <div class="card">
-            <h3>Software service</h3>
-            <p>
-              Insight Guard is offered as a hosted software service for teams evaluating
-              runtime governance controls and contract-style AI decisioning.
-            </p>
+        <h2>AI培训内容</h2>
+        <div class="two">
+          <div>
+            <ul>
+              <li>企业为什么要用AI，以及AI适合解决哪些具体问题</li>
+              <li>ChatGPT等AI工具的正确使用方式</li>
+              <li>如何写更有效的提示词，提高输出质量</li>
+              <li>不同岗位的AI应用：营销、销售、客服、运营、管理</li>
+              <li>如何让团队协作使用AI，而不是个人零散使用</li>
+              <li>如何建立适合企业自己的AI工作方法和SOP</li>
+            </ul>
           </div>
 
           <div class="card">
-            <h3>Transparent policies</h3>
+            <h3>适合的客户</h3>
             <p>
-              Pricing, terms, and privacy information are publicly available to support
-              procurement review and platform verification workflows.
+              适合还没有系统使用AI、希望快速建立团队AI能力的企业，
+              也适合已经在尝试AI，但效果不稳定、落地不顺畅的团队。
             </p>
           </div>
-
-          <div class="card">
-            <h3>Support-ready</h3>
-            <p>
-              Customers can contact us for onboarding, access requests, commercial questions,
-              and reference material through the contact details below.
-            </p>
-          </div>
-        </div>
-
-        <div class="cta" style="margin-top: 16px;">
-          <a class="btn" href="/pricing/">Pricing</a>
-          <a class="btn" href="/terms/">Terms of Service</a>
-          <a class="btn" href="/privacy/">Privacy Policy</a>
         </div>
       </div>
 
-      <div class="section" id="faq">
-        <h2>FAQ</h2>
+      <div class="section">
+        <h2>AI实施落地内容</h2>
+        <div class="two">
+          <div>
+            <ul>
+              <li>AI内容生成流程搭建</li>
+              <li>AI营销辅助与获客流程设计</li>
+              <li>AI自动化客户沟通与线索跟进</li>
+              <li>AI辅助数据分析与业务洞察</li>
+              <li>企业内部流程的自动化改造</li>
+              <li>根据企业场景进行定制化实施与陪跑</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>实施目标</h3>
+            <p>
+              不是为了“上AI”而上AI，而是让企业在真实业务中看到
+              效率提升、客户增长、内容产能提升、流程优化或管理效率改善。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>AI治理与控制</h2>
+        <div class="two">
+          <div>
+            <ul>
+              <li>建立企业AI使用边界与规则</li>
+              <li>关键输出可审计、可追踪、可回溯</li>
+              <li>敏感流程和高风险输出增加控制机制</li>
+              <li>多团队、多客户、多场景下的隔离与权限管理</li>
+              <li>必要时支持关闭、观察模式或受控运行模式</li>
+              <li>帮助企业在扩展AI使用时保持稳定和可控</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>为什么重要</h3>
+            <p>
+              当企业开始大规模使用AI后，最大的风险不是不会用，
+              而是“用得乱、不可控、无法审计”。治理能力决定AI能否长期稳定服务业务。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="process">
+        <h2>合作方式</h2>
+        <div class="three">
+          <div class="card">
+            <h3>阶段一：诊断与规划</h3>
+            <p>
+              先了解企业当前业务模式、团队结构、目标和瓶颈，
+              明确AI培训重点和落地方向。
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>阶段二：培训与实施</h3>
+            <p>
+              通过培训、实操、流程设计和项目推进，
+              帮助团队从认知走向真正使用。
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>阶段三：优化与治理</h3>
+            <p>
+              当AI开始进入业务关键流程后，进一步建立规范、
+              控制和持续优化机制。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>我们适合哪些企业</h2>
         <ul>
-          <li><b>Do I need to point the domain to a VPS?</b> No. This site is static and hosted via GitHub Pages; your API can stay elsewhere.</li>
-          <li><b>What makes this “contract-first”?</b> Behavior is versioned, reason codes are stable, and every decision is auditable with replayable semantics.</li>
-          <li><b>Can this run “shadow-only”?</b> Yes. You can log decisions without enforcing them, then turn on enforcement per tenant.</li>
-          <li><b>Is this “AI safety” marketing?</b> No. This is runtime governance with auditable outputs and contract semantics.</li>
-          <li><b>Where can I read more?</b> Notes live at <a href="/blog/">/blog/</a>.</li>
-          <li><b>Do you offer subscriptions?</b> Yes. See <a href="/pricing/">/pricing/</a> for current commercial information.</li>
+          <li>想把AI用于营销、销售、内容、运营或管理提效的企业</li>
+          <li>想给团队做系统AI培训，而不是听一场泛泛的讲座</li>
+          <li>想把AI变成业务流程的一部分，而不是零散使用</li>
+          <li>在引入AI后，担心输出风险、管理失控、使用混乱的企业</li>
+          <li>希望先从小范围试点，再逐步扩展AI能力的公司</li>
+        </ul>
+      </div>
+
+      <div class="section" id="faq">
+        <h2>常见问题</h2>
+        <ul>
+          <li><b>你们是做培训，还是做系统？</b> 两者都做。我们既做AI培训，也做AI实施落地，并可进一步帮助企业建立AI治理能力。</li>
+          <li><b>是不是必须懂技术才能合作？</b> 不需要。我们会根据企业现状设计适合的培训和实施方式。</li>
+          <li><b>可以只做培训吗？</b> 可以。也可以先从培训开始，再逐步进入实施和治理阶段。</li>
+          <li><b>你们适合什么阶段的企业？</b> 无论是刚开始了解AI，还是已经在使用AI但缺乏体系化方法的企业，都适合合作。</li>
+          <li><b>治理是不是只有大公司才需要？</b> 不是。只要AI开始影响业务输出、客户沟通或内部流程，就需要基本的治理与控制机制。</li>
         </ul>
       </div>
 
       <div class="section" id="contact">
-        <h2>Contact</h2>
+        <h2>联系我们</h2>
         <p class="sub" style="margin-top: 8px">
-          If you want the reference pack, SDK examples, pricing details, or a contract-ready spec bundle, reach out below.
+          如果你希望为团队开展AI培训、规划AI落地项目，或建立企业级AI治理能力，欢迎联系我们进一步沟通。
         </p>
 
         <div class="contact-list">
           <div class="contact-item">
-            <span class="label">Product</span>
+            <span class="label">品牌 / 项目名称</span>
             Insight Guard
           </div>
 
           <div class="contact-item">
-            <span class="label">Operator</span>
-            INNERSENSE LABS LLC
+            <span class="label">服务方向</span>
+            企业AI培训、AI实施落地、AI治理与控制
           </div>
 
           <div class="contact-item">
-            <span class="label">Support / Commercial Email</span>
+            <span class="label">联系邮箱</span>
             <a href="mailto:info@insightguard.tech">info@insightguard.tech</a>
           </div>
 
           <div class="contact-item">
-            <span class="label">Website</span>
+            <span class="label">网站</span>
             <a href="https://insightguard.tech">https://insightguard.tech</a>
-          </div>
-
-          <div class="contact-item">
-            <span class="label">Policies</span>
-            <a href="/pricing/">Pricing</a> ·
-            <a href="/terms/">Terms</a> ·
-            <a href="/privacy/">Privacy</a>
           </div>
         </div>
 
         <div class="pillrow" style="margin-top: 14px">
-          <div class="pill">Reference Case (shadow)</div>
-          <div class="pill">SDK v0 (Node / Python)</div>
-          <div class="pill">Contract bundle</div>
-          <div class="pill">Ops runbooks</div>
-        </div>
-
-        <div class="pillrow" style="margin-top: 10px">
-          <a class="pill" href="/blog/" style="text-decoration: none">Read Notes →</a>
+          <div class="pill">企业内训</div>
+          <div class="pill">实战陪跑</div>
+          <div class="pill">流程搭建</div>
+          <div class="pill">治理体系</div>
         </div>
       </div>
 
       <div class="foot">
-        <div>© <span id="y"></span> Insight Guard. All rights reserved.</div>
+        <div>© <span id="y"></span> 杭州丹彦电子商务有限公司 版权所有</div>
         <div class="mini">
-          <a href="/pricing/">Pricing</a> ·
-          <a href="/terms/">Terms</a> ·
-          <a href="/privacy/">Privacy</a>
+          AI培训 · AI实施 · AI治理
         </div>
       </div>
     </div>
